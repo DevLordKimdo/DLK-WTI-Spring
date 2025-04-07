@@ -18,11 +18,16 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation     'org.springframework.boot:spring-boot-starter-web' // spring-web
+	implementation     'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation     'org.springframework.boot:spring-boot-starter-jdbc' // jdbc
+	implementation     'org.xerial:sqlite-jdbc:3.42.0.0' // SQLite
+	implementation     'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2' // Mybatis
+
+	developmentOnly    'org.springframework.boot:spring-boot-devtools' // devTools
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' // Spring Boot Test. (ex Junit)
+	testRuntimeOnly    'org.junit.platform:junit-platform-launcher' // Spring Boot Test. (ex Junit)
 }
 
 tasks.named('test') {
