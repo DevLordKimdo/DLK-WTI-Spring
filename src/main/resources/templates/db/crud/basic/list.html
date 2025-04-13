@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Crud Basic List</title>
+<title>Db Crud Basic List</title>
 </head>
 <link rel="stylesheet" href="/css/basic/styles.css">
 <body>
@@ -26,7 +26,7 @@
 	    <tbody>
 		    <tr th:each="list: ${list}">
 		        <td th:text="${list.idx}"></td>
-		        <td><a th:text="${list.title}" th:href="@{|/crud/basic/read/${list.idx}|}"></a></td>
+		        <td><a th:text="${list.title}" th:href="@{|/db/crud/basic/read/${list.idx}|}"></a></td>
 				<td th:text="${list.name}"></td>
 				<td th:text="${list.datetime}"></td>
 		        <td th:text="${list.hit}"></td>
@@ -34,7 +34,7 @@
 	    </tbody>
 	    <tfoot>
 			<tr>
-				<td><a href="/crud/basic/create"><button>글작성</button></a></td>
+				<td><a href="/db/crud/basic/create"><button>글작성</button></a></td>
 			</tr>
 	    </tfoot>
 	</table>

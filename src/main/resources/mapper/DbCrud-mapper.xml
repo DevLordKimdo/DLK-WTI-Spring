@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="CrudBasic">
-	<select id="list" resultType="dlk.wti.spring.crud.basic.CrudBasicDTO">
+<mapper namespace="DbCrud">
+	<select id="list" resultType="dlk.wti.spring.db.crud.dto.DbCrudDTO">
 			SELECT 
 			       idx,
 			       title,
@@ -10,11 +10,11 @@
 			       name,
 			       datetime,
 			       hit
-			FROM CRUD
+			FROM crud
 	</select>
 	
-	<insert id="create" parameterType="dlk.wti.spring.crud.basic.CrudBasicDTO">
-			INSERT INTO CRUD (
+	<insert id="create" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO">
+			INSERT INTO crud (
 				title,
 				content,
 				name,
@@ -31,10 +31,10 @@
 	</insert>
 	
 	<update id="updateHit" parameterType="String">
-		UPDATE CRUD set hit = hit + 1 WHERE idx = #{idx}
+		UPDATE crud set hit = hit + 1 WHERE idx = #{idx}
 	</update>
 	
-	<select id="read" resultType="dlk.wti.spring.crud.basic.CrudBasicDTO" parameterType="String">
+	<select id="read" resultType="dlk.wti.spring.db.crud.dto.DbCrudDTO" parameterType="String">
 		SELECT 
 			idx,
 			title,
@@ -42,12 +42,12 @@
 			name,
 			datetime,
 			hit
-		FROM CRUD
+		FROM crud
 		WHERE idx = #{idx}
 	</select>
 	
-	<update id="update" parameterType="dlk.wti.spring.crud.basic.CrudBasicDTO">
-		UPDATE CRUD SET
+	<update id="update" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO">
+		UPDATE crud SET
 		      title    = #{title}
 		    , name     = #{name}
 		    , content  = #{content}
@@ -55,6 +55,6 @@
 	</update>
 	
 	<delete id="delete" parameterType="String">
-		DELETE FROM CRUD WHERE idx = #{idx}
+		DELETE FROM crud WHERE idx = #{idx}
 	</delete>
 </mapper>

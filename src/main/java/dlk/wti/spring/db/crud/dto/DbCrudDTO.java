@@ -1,6 +1,6 @@
-package dlk.wti.spring.crud.basic;
+package dlk.wti.spring.db.crud.dto;
 
-public class CrudBasicDTO {
+public class DbCrudDTO {
 	
 	private String idx;
 	private String title;
@@ -45,5 +45,6 @@ public class CrudBasicDTO {
 	public void setHit(String hit) {
 		this.hit = hit;
 	}
+	
 
 }
