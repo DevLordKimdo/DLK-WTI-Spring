@@ -46,5 +46,4 @@ public class DbCrudDTO {
 		this.hit = hit;
 	}
 	
-
 }

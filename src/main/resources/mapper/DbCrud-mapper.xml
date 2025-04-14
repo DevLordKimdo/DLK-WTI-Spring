@@ -3,58 +3,58 @@
 
 <mapper namespace="DbCrud">
 	<select id="list" resultType="dlk.wti.spring.db.crud.dto.DbCrudDTO">
-			SELECT 
-			       idx,
-			       title,
-			       content,
-			       name,
-			       datetime,
-			       hit
-			FROM crud
+		SELECT idx
+		     , title
+		     , content
+		     , name
+		     , datetime
+		     , hit
+		  FROM post_board
 	</select>
 	
 	<insert id="create" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO">
-			INSERT INTO crud (
-				title,
-				content,
-				name,
-				datetime,
-				hit
-			)
-			values (
-				#{title},
-				#{content},
-				#{name},
-				datetime('now', 'localtime'),
-				'0'
-			)
+		INSERT INTO post_board (
+			   title
+			 , content
+			 , name
+			 , datetime
+		     , hit
+		)
+		values (
+			  #{title}
+			, #{content}
+			, #{name}
+			, datetime('now', 'localtime')
+			, '0'
+		)
 	</insert>
 	
 	<update id="updateHit" parameterType="String">
-		UPDATE crud set hit = hit + 1 WHERE idx = #{idx}
+		UPDATE post_board set hit = hit + 1 WHERE idx = #{idx}
 	</update>
 	
 	<select id="read" resultType="dlk.wti.spring.db.crud.dto.DbCrudDTO" parameterType="String">
-		SELECT 
-			idx,
-			title,
-			content,
-			name,
-			datetime,
-			hit
-		FROM crud
+	   SELECT idx,
+			  title,
+			  content,
+			  name,
+			  datetime,
+			  hit
+		 FROM post_board
 		WHERE idx = #{idx}
 	</select>
 	
 	<update id="update" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO">
-		UPDATE crud SET
-		      title    = #{title}
-		    , name     = #{name}
-		    , content  = #{content}
-	    WHERE idx = #{idx}
+		UPDATE post_board
+		   SET title    = #{title}
+		     , name     = #{name}
+		     , content  = #{content}
+	     WHERE idx = #{idx}
 	</update>
 	
 	<delete id="delete" parameterType="String">
-		DELETE FROM crud WHERE idx = #{idx}
+		DELETE
+		  FROM post_board
+		 WHERE idx = #{idx}
 	</delete>
 </mapper>
