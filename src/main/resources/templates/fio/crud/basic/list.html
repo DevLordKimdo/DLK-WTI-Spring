@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fio Crud Basic List</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<table>
+	    <colgroup> 
+	    	<col style="width: 10%;"/>
+	        <col style="width: 60%;"/>
+	        <col style="width: 10%;"/>
+	        <col style="width: 20%;"/>
+	    </colgroup>
+		<thead>
+		    <tr>
+		        <th>번호</th>
+		        <th>파일이름</th>
+		        <th>확장자</th>
+		        <th>파일크기</th>
+		    </tr>
+	    </thead>
+	    <tbody th:if="${#arrays.isEmpty(list) && list != null}">
+			<tr>
+				<td>파일이 없습니다.</td>
+			</tr>
+	    </tbody>
+	    <tbody th:else th:if="${list == null}">
+			<tr>
+				<td>폴더 경로가 잘못 지정되었습니다. 지정된 경로를 확인하세요.</td>
+			</tr>
+	    </tbody>
+	    <tbody th:else>
+		    <tr th:each="list: ${list}">
+		    	<td>1</td>
+				<td th:text="${list}"></td>
+				<td>2</td>
+				<td>3</td>
+		    </tr>
+	    </tbody>
+	    <tfoot>
+			<tr>
+				<td><a href="#"><button>글작성</button></a></td>
+			</tr>
+	    </tfoot>
+	</table>
+</body>
+</html>
