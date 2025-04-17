@@ -18,30 +18,20 @@
 		        <th>번호</th>
 		        <th>파일이름</th>
 		        <th>확장자</th>
-		        <th>파일크기</th>
+		        <th>파일크기(byte)</th>
 		    </tr>
 	    </thead>
-	    <tbody th:if="${#arrays.isEmpty(list) && list != null}">
-			<tr>
-				<td>파일이 없습니다.</td>
-			</tr>
-	    </tbody>
-	    <tbody th:else th:if="${list == null}">
-			<tr>
-				<td>폴더 경로가 잘못 지정되었습니다. 지정된 경로를 확인하세요.</td>
-			</tr>
-	    </tbody>
-	    <tbody th:else>
+	    <tbody>
 		    <tr th:each="list: ${list}">
-		    	<td>1</td>
-				<td th:text="${list}"></td>
-				<td>2</td>
-				<td>3</td>
+		    	<td th:text="${list.listNo}"></td>
+				<td><a th:text="${list.name}" th:href="@{|/fio/crud/basic/read/${list.name}|}"></a></td>
+				<td th:text="${list.extension}"></td>
+				<td th:text="${list.size}"></td>
 		    </tr>
 	    </tbody>
 	    <tfoot>
 			<tr>
-				<td><a href="#"><button>글작성</button></a></td>
+				<td><a href="/fio/crud/basic/create"><button>글작성</button></a></td>
 			</tr>
 	    </tfoot>
 	</table>

@@ -6,39 +6,59 @@ import java.util.*;
 
 import org.springframework.stereotype.Service;
 
+import dlk.wti.spring.fio.crud.dto.FioCrudDTO;
+
 @Service
 public class FioCrudBasicService {
 	
-	public List<String> list(String directoryPath) throws IOException {
+	private final FioCrudBasicRepository fioCrudBasicRepository;
+	public FioCrudBasicService (FioCrudBasicRepository fioCrudBasicRepository) { this.fioCrudBasicRepository = fioCrudBasicRepository; }
+
+	public List<FioCrudDTO> list(String fioPath) throws IOException {
 		
-		Path path = Paths.get(directoryPath);
-		List<String> list = new ArrayList<>();
-		
-		if (!Files.exists(path) || !Files.isDirectory(path)) {
-			
-        	System.out.println("유효하지 않은 디렉토리 입니다.");
-        	
-        	return null;
-        	
-        } else {
-        	
-    		try(DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path)) {
-    			Iterator<Path> iterator = directoryStream.iterator();
-    			
-    			while(iterator.hasNext()) {
-    				Path filePath = iterator.next();
-    				
-    	            // 일반 파일만 필터링
-    	            if (Files.isRegularFile(filePath)) {
-    	                // 파일 이름만 추출하여 문자열로 변환 후 결과 목록에 추가
-    	                String fileName = filePath.getFileName().toString();
-    	                list.add(fileName);
-    	            }
-    			}
-    		}
-        }
-		
+		List<FioCrudDTO> list = new ArrayList<>();
+    	List<Path> ArrayList = fioCrudBasicRepository.list(fioPath);
+    	int i = 0;
+    	
+    	if(ArrayList != null) {
+        	for(Path file : ArrayList) {
+        		FioCrudDTO tempDTO = new FioCrudDTO();
+        		i++;
+        		
+        		// 파일 이름, 크기 지정
+                String Name = file.getFileName().toString();
+                String Size = Long.toString(Files.size(file));
+                
+                // 확장자 구하기
+                String Extension = "";
+                int lastIndex = Name.lastIndexOf(".");
+                if (lastIndex > 0) { Extension = Name.substring(lastIndex + 1); }
+                
+                // 번호 부여
+                String ListNo = Integer.toString(i);
+                
+                tempDTO.setName(Name);
+                tempDTO.setListNo(ListNo);
+                tempDTO.setExtension(Extension);
+                tempDTO.setSize(Size);
+                list.add(tempDTO);
+        	}
+    	}
 		return list;
 	}
+	
+	public void create(String fioPath, FioCrudDTO fioCrudDTO) throws IOException {
+		fioCrudBasicRepository.create(fioPath, fioCrudDTO);
+	}
+	
+	public FioCrudDTO read(String fioPath, String name) throws IOException {
+		
+		FioCrudDTO fioCrudDTO = new FioCrudDTO();
+		
+		fioCrudDTO.setContent(fioCrudBasicRepository.read(fioPath, name));
+		fioCrudDTO.setName(name);
 
+		return fioCrudDTO;
+	}
+	
 }
