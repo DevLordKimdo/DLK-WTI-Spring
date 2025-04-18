@@ -61,4 +61,12 @@ public class FioCrudBasicService {
 		return fioCrudDTO;
 	}
 	
+	public void update(String fioPath, String preName, FioCrudDTO fioCrudDTO) throws IOException {
+		fioCrudBasicRepository.update(fioPath, preName, fioCrudDTO);
+	}
+	
+	public void delete(String fioPath, String name) throws IOException {
+		fioCrudBasicRepository.delete(fioPath, name);
+	}
+	
 }

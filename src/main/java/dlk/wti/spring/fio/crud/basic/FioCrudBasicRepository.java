@@ -66,8 +66,42 @@ public class FioCrudBasicRepository {
 		Path path = Paths.get(fioPath);
 		Path filePath = path.resolve(name);
 		
+		// 내부 파일 읽기.
 		String content = Files.readString(filePath);
 		
 		return content;
+	}
+	
+	public void update(String fioPath, String preName, FioCrudDTO fioCrudDTO) throws IOException {
+		
+		Path path = Paths.get(fioPath);
+		Path filePath = path.resolve(preName);
+		
+		String content = fioCrudDTO.getContent();
+		String newName = fioCrudDTO.getName();
+		Path newFilePath = path.resolve(newName);
+		
+		// 파일 쓰기
+		Files.write(
+				filePath,
+				content.getBytes(StandardCharsets.UTF_8)
+		);
+		
+		// 파일 이동(이름 변경) 로직. 
+        if (!preName.equals(newName)) {
+        	if (Files.exists(newFilePath)) { throw new IOException("이미 해당 파일이 존재합니다."); }
+            Files.move(filePath, newFilePath, StandardCopyOption.REPLACE_EXISTING);
+        }
+
+	}
+	
+	public void delete(String fioPath, String name) throws IOException {
+		
+		Path path = Paths.get(fioPath);
+		Path filePath = path.resolve(name);
+		
+		// 파일 삭제
+		Files.delete(filePath);
+		
 	}
 }

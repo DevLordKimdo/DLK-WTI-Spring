@@ -18,6 +18,7 @@ public class FioCrudBasicController {
 	private final FioCrudBasicService fioCrudBasicService;
 	public FioCrudBasicController (FioCrudBasicService fioCrudBasicService) { this.fioCrudBasicService = fioCrudBasicService; }
 	
+	// application.properties 에 지정한 변수 가져오기
     @Value("${location.fio.path}")
     private String fioPath;
 	
@@ -48,13 +49,32 @@ public class FioCrudBasicController {
 	@GetMapping("fio/crud/basic/read/{name}")
 	public String read(@PathVariable("name") String name, Model model) throws IOException {
 		
-		FioCrudDTO fioCrudDTO = fioCrudBasicService.read(fioPath,name);
+		FioCrudDTO fioCrudDTO = fioCrudBasicService.read(fioPath, name);
 		model.addAttribute("read", fioCrudDTO);
 		
 		return "fio/crud/basic/read";
 	}
+	
+	@PostMapping("fio/crud/basic/update/{preName}")
+	public String update(@PathVariable("preName") String preName, FioCrudDTO fioCrudDTO) throws IOException {
 
+		fioCrudBasicService.update(fioPath, preName, fioCrudDTO);
+		String name = fioCrudDTO.getName();
+		
+		return "redirect:/fio/crud/basic/read/" + name;
+	}
+	
+	@GetMapping("fio/crud/basic/delete/{name}")
+	public String delete(@PathVariable("name") String name) throws IOException {
+		
+		fioCrudBasicService.delete(fioPath, name);
+		
+		return "redirect:/fio/crud/basic/list";
+	}
+	
 }
 
 // 물리적인 파일 CRUD 기능.
 // 선행작업으로 C:/fio 경로의 폴더 만들기 필요.
+// 주의. 한글로 입력/생성/저장 할 시 유니코드 오류가 발생되므로 영어로만 작성할것.
+// 주의. 텍스트로 입력된 파일만 넣을 것.
