@@ -17,17 +17,18 @@ public class FioCrudBasicRepository {
 		Path path = Paths.get(fioPath);
 		List<Path> list = new ArrayList<>();
 		
+		// 해당 경로가 실존하는 경로이거나, 혹은 폴더가 아닐 경우 에러 발생
 		if (!Files.exists(path) && !Files.isDirectory(path)) {
-        	System.out.println("유효하지 않은 디렉토리 입니다.");
-        	return null;
-        } else {
-    		try(DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path)) {
-    			for (Path file : directoryStream) {
-    				list.add(file);
-    			}
-    		}
-    		return list;
-        }
+			throw new IOException("유효하지 않은 디렉토리 입니다: " + fioPath);
+		}
+
+		// 파일 리스트 목록 불러오기
+		try(DirectoryStream<Path> directoryStream = Files.newDirectoryStream(path)) {
+			for (Path file : directoryStream) {
+				list.add(file);
+			}
+		}
+		return list;
 	}
 	
 	public void create(String fioPath, FioCrudDTO fioCrudDTO) throws IOException {
