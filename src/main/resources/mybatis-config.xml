@@ -2,4 +2,8 @@
 <!DOCTYPE configuration PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 
 <configuration>
+    <settings>
+    	<!-- SQL 실행 시 로그를 출력하는 옵션 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
 </configuration>

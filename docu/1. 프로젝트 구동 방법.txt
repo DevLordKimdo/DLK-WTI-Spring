@@ -1,0 +1,14 @@
+프로젝트 구동
+첫번째 방법(개발용)
+STS IDE 를 이용해 Boot Dashboard 에서 해당 프로젝트를 가동시킨다. 
+
+두번째 방법(실제 운용)
+1. 프로젝트가 들어있는 경로를 들어간다
+2. 프로젝트를 빌드 한다
+- CMD 명령어: gradlew build
+- PowerShell 명령어: .\gradlew build
+3. 빌드 작업이 끝나면 build 폴더가 생성된다
+4. build 폴더 안의 libs 경로로 진입한다.
+5. DLK-WTI-Spring-0.0.1-SNAPSHOT.jar 파일이 생성 되었는지를 확인한다
+6. java -jar DLK-WTI-Spring-0.0.1-SNAPSHOT.jar 명령어를 입력한다.
+7. 프로젝트 구동 후 확인
