@@ -12,7 +12,6 @@ public class DbCrudBasicRepository {
 	
 	private final SqlSessionTemplate sql;
 	public DbCrudBasicRepository(SqlSessionTemplate sql) {this.sql = sql;}
-	
 
 	public List<DbCrudDTO> list() {
 		return sql.selectList("DbCrud.list");

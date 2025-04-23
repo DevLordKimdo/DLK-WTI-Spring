@@ -9,9 +9,7 @@ import dlk.wti.spring.db.crud.dto.DbCrudDTO;
 @Service
 public class FeFormRowsubmitService {
 	
-	public List<DbCrudDTO> submit(List<String> title, 
-			                      List<String> name, 
-			                      List<String> content) {
+	public List<DbCrudDTO> submit(List<String> title, List<String> name, List<String> content) {
 		
 		List<DbCrudDTO> DbCrudDTO = new ArrayList<>();
 		
