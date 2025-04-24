@@ -16,7 +16,7 @@ public class DbCrudBasicController {
     private final DbCrudBasicService dbCrudBasicService;
     public DbCrudBasicController(DbCrudBasicService dbCrudBasicService) {this.dbCrudBasicService = dbCrudBasicService;}
     
-	@GetMapping({"db/crud/basic","db/crud/basic/list"})
+	@GetMapping({"/db/crud/basic","/db/crud/basic/list"})
 	public String list(Model model) {
 						
 		List<DbCrudDTO> list = dbCrudBasicService.list();
@@ -25,13 +25,13 @@ public class DbCrudBasicController {
 		return "db/crud/basic/list";
 	}
 	
-	@GetMapping("db/crud/basic/create")
+	@GetMapping("/db/crud/basic/create")
 	public String create() {
 		
 		return "db/crud/basic/create";
 	}
 	
-	@PostMapping("db/crud/basic/create")
+	@PostMapping("/db/crud/basic/create")
 	public String create(DbCrudDTO dbCrudDTO) {
 		
 		dbCrudBasicService.create(dbCrudDTO);
@@ -39,7 +39,7 @@ public class DbCrudBasicController {
 		return "redirect:/db/crud/basic/list";
 	}
 	
-	@GetMapping("db/crud/basic/read/{idx}")
+	@GetMapping("/db/crud/basic/read/{idx}")
 	public String read(@PathVariable("idx") String idx, Model model) {
 		
 		dbCrudBasicService.updateHit(idx);
@@ -49,7 +49,7 @@ public class DbCrudBasicController {
 		return "db/crud/basic/read";
 	}
 	
-	@PostMapping("db/crud/basic/update/{idx}")
+	@PostMapping("/db/crud/basic/update/{idx}")
 	public String update(@PathVariable("idx") String idx, DbCrudDTO dbCrudDTO) {
 						
 		dbCrudDTO.setIdx(idx);
@@ -58,7 +58,7 @@ public class DbCrudBasicController {
 		return "redirect:/db/crud/basic/read/" + idx;
 	}
 	
-	@GetMapping("db/crud/basic/delete/{idx}")
+	@GetMapping("/db/crud/basic/delete/{idx}")
 	public String delete(@PathVariable("idx") String idx) {
 		
 		dbCrudBasicService.delete(idx);
