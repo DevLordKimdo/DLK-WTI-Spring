@@ -22,6 +22,7 @@ public class FioBoardBasicService {
 		if (!list.isEmpty()) {
 		    String prevGroupIdx = list.get(0).getGroupIdx();
 
+		    // GroupIdx 그룹화. 같은 GroupIdx 번호 끼리는 대표자 번호를 제외한 나머지 GroupIdx 는 null로 변환
 		    for (int i = 1; i < list.size(); i++) {
 		    	FioBoardDTO currentDTO = list.get(i);
 		        String currentGroupIdx = currentDTO.getGroupIdx();
