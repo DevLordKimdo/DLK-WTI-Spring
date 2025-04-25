@@ -31,17 +31,15 @@ public class FioUpdownBasicController {
 	}
 
     @GetMapping("/fio/updown/basic/sample-download")
-    public void sampleDownload(HttpServletResponse response)  throws IOException  {
+    public void sampleDownload(HttpServletResponse response) throws IOException {
         // 다운로드 파일 경로 지정
         final String sampleFile = fioPath + "/sample.png";
     	
     	fioUpdownBasicService.sampleDownload(response, sampleFile);
-
-        
     }
 	
 	@PostMapping("/fio/updown/basic/single-upload")
-	public String SingleUpload(@RequestParam("singleUpload") MultipartFile file)  throws IOException  {
+	public String SingleUpload(@RequestParam("singleUpload") MultipartFile file) throws IOException {
 				
     	fioUpdownBasicService.singleUpload(file, fioPath);
 
@@ -49,7 +47,7 @@ public class FioUpdownBasicController {
 	}
 	
 	@PostMapping("/fio/updown/basic/multi-upload")
-	public String multiUpload(@RequestParam("multiUpload") List<MultipartFile> files)  throws IOException  {
+	public String multiUpload(@RequestParam("multiUpload") List<MultipartFile> files)  throws IOException {
 		
     	fioUpdownBasicService.multiUpload(files, fioPath);
 		

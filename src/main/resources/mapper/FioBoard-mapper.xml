@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FioBoard">
+	<!-- DTO와 DB 칼럼명 네이밍 컨벤션이 일치하지 않으므로 resultMap을 이용해 변환작업을 진행 -->
+	<!-- JAVA DTO: 카멜 / DB: 스네이크 -->
+	<resultMap id="fioBoardResultMap" type="dlk.wti.spring.fio.board.dto.FioBoardDTO">
+		    <id property="idx"        column="idx"/>
+		<result property="groupIdx"   column="group_idx"/>
+		<result property="name"       column="name"/>
+		<result property="size"       column="size"/>
+		<result property="seq"        column="seq"/>
+		<result property="datetime"   column="datetime"/>
+		<result property="groupCount" column="group_count"/>
+	</resultMap>
+
+	<select id="list" resultMap="fioBoardResultMap">
+		SELECT a.idx
+			 , a.group_idx
+			 , a.name
+			 , a.size
+			 , a.seq
+			 , a.datetime
+			 , ( SELECT COUNT(*) FROM file_board WHERE group_idx = a.group_idx ) AS group_count
+		  FROM file_board AS a
+	</select>
+	
+	<select id="newGroupIdx" resultType="String">
+		SELECT CASE WHEN MAX(group_idx) is null THEN 1 
+			   		ELSE MAX(group_idx) + 1
+		        END AS NewPostIdx
+		  FROM file_board
+	</select>
+	
+	<insert id="upload" parameterType="dlk.wti.spring.fio.board.dto.FioBoardDTO">
+		INSERT INTO file_board (
+			  group_idx
+			, name
+			, size
+			, seq
+			, datetime
+		) VALUES (
+			  #{groupIdx}
+     		, #{name}
+     		, #{size}
+     		, #{seq}
+			, datetime('now', 'localtime')
+		) 
+	</insert>
+</mapper>
