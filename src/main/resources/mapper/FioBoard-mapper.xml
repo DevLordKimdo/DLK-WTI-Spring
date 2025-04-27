@@ -4,6 +4,7 @@
 <mapper namespace="FioBoard">
 	<!-- DTO와 DB 칼럼명 네이밍 컨벤션이 일치하지 않으므로 resultMap을 이용해 변환작업을 진행 -->
 	<!-- JAVA DTO: 카멜 / DB: 스네이크 -->
+	<!-- 다른 방법으로 AS 를 이용해 일일이 출력할 칼럼 이름을 수정하는 방법도 있다. 예) a.group_idx AS groupIdx -->
 	<resultMap id="fioBoardResultMap" type="dlk.wti.spring.fio.board.dto.FioBoardDTO">
 		    <id property="idx"        column="idx"/>
 		<result property="groupIdx"   column="group_idx"/>

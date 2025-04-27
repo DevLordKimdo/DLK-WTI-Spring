@@ -40,10 +40,11 @@ public class FioBoardBasicService {
 	
 	public void upload(List<MultipartFile> files, String directory) throws IOException {
 		
-		// 첨부파일 리스트 정보 DB에 INSERT
+		
 		// 새로운 GroupIdx 값 생성
 		String newGroupIdx = fioBoardBasicRepository.newGroupIdx();
 		
+		// 순차적으로 DB에 INSERT
 		for (int i = 0; i < files.size(); i++) {
 			MultipartFile file = files.get(i);
 			FioBoardDTO fioBoardDTO = new FioBoardDTO();
