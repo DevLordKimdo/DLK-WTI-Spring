@@ -1,4 +1,4 @@
-package dlk.wti.spring.fe.form.inputdisable;
+package dlk.wti.spring.uix.form.inputdisable;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class FeFormInputdisable {
+public class UixFormInputdisable {
 	
-	@GetMapping({"/template/fe/form/input-disable","/template/fe/form/input-disable/form"})
+	@GetMapping({"/template/uix/form/input-disable","/template/uix/form/input-disable/form"})
 	public String form() {
 
-		return "fe/form/inputdisable/form";
+		return "uix/form/inputdisable/form";
 	}
 	
-	@PostMapping("/template/fe/form/input-disable/submit")
+	@PostMapping("/template/uix/form/input-disable/submit")
 	public String submit(HttpServletRequest request) {
 		
 		System.out.println( "");
@@ -45,7 +45,7 @@ public class FeFormInputdisable {
 	    System.out.println( "textarea Readonly Value : " +  request.getParameter("textareaReadonly") );
 	    System.out.println( "textarea Disabled Value : " +  request.getParameter("textareaDisabled") );
 	    
-		return "redirect:/template" + "/fe/form/input-disable/form";
+		return "redirect:/template" + "/uix/form/input-disable/form";
 	}
 
 }

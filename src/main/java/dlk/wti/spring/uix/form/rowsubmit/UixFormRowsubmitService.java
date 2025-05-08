@@ -1,4 +1,4 @@
-package dlk.wti.spring.fe.form.rowsubmit;
+package dlk.wti.spring.uix.form.rowsubmit;
 
 import java.util.*;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import dlk.wti.spring.db.crud.dto.DbCrudDTO;
 
 @Service
-public class FeFormRowsubmitService {
+public class UixFormRowsubmitService {
 	
 	public List<DbCrudDTO> submit(List<String> title, List<String> name, List<String> content) {
 		

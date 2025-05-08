@@ -1,4 +1,4 @@
-package dlk.wti.spring.fe.form.rowsubmit;
+package dlk.wti.spring.uix.form.rowsubmit;
 
 import java.util.*;
 
@@ -12,39 +12,39 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import dlk.wti.spring.db.crud.dto.DbCrudDTO;
 
 @Controller
-public class FeFormRowsubmitController {
+public class UixFormRowsubmitController {
 	
-    private final FeFormRowsubmitService feFormRowsubmitService;
-    public FeFormRowsubmitController(FeFormRowsubmitService feFormRowsubmitService) {this.feFormRowsubmitService = feFormRowsubmitService;}
+    private final UixFormRowsubmitService uixFormRowsubmitService;
+    public UixFormRowsubmitController(UixFormRowsubmitService uixFormRowsubmitService) {this.uixFormRowsubmitService = uixFormRowsubmitService;}
 	
-	@GetMapping({"/template/fe/form/row-submit","/template/fe/form/row-submit/form"})
+	@GetMapping({"/template/uix/form/row-submit","/template/uix/form/row-submit/form"})
 	public String form() {
 		
-		return "fe/form/rowsubmit/form";
+		return "uix/form/rowsubmit/form";
 	}
 	
-	@PostMapping("/template/fe/form/row-submit/submit")
+	@PostMapping("/template/uix/form/row-submit/submit")
 	public String submit(@RequestParam("title")   List<String> title, 
 			             @RequestParam("name")    List<String> name,
 			             @RequestParam("content") List<String> content) {
 		
-		List<DbCrudDTO> dbCrudDTO = feFormRowsubmitService.submit(title, name, content);
+		List<DbCrudDTO> dbCrudDTO = uixFormRowsubmitService.submit(title, name, content);
 
 		for(DbCrudDTO list : dbCrudDTO) {
 			System.out.println(list.getTitle() + " " + list.getName() + " " + list.getContent());
 		}
 		
-		return "redirect:/template" + "/fe/form/row-submit/form";
+		return "redirect:/template" + "/uix/form/row-submit/form";
 	}
 	
-	@GetMapping("/template/fe/form/row-submit/form-fetch")
+	@GetMapping("/template/uix/form/row-submit/form-fetch")
 	public String formFetch() {
 		
-		return "fe/form/rowsubmit/formfetch";
+		return "uix/form/rowsubmit/formfetch";
 	}
 	
 	
-	@PostMapping("/template/fe/form/row-submit/submit-fetch")
+	@PostMapping("/template/uix/form/row-submit/submit-fetch")
 	@ResponseBody
 	public String submitFetch(@RequestBody Map<String, List<DbCrudDTO>> request) {
 		

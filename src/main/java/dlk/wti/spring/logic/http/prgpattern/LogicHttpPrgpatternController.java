@@ -1,4 +1,4 @@
-package dlk.wti.spring.be.http.prgpattern;
+package dlk.wti.spring.logic.http.prgpattern;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +10,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class BeHttpPrgpatternController {
+public class LogicHttpPrgpatternController {
 	
-    @GetMapping({"/template/be/http/prg-pattern","/template/be/http/prg-pattern/index"})
+    @GetMapping({"/template/logic/http/prg-pattern","/template/logic/http/prg-pattern/index"})
 	public String index(ModelMap modelMap, Model model) {
     	
     	// 다른 방식으로 메소드 파라미터에 ModelMap 대신 @ModelAttribute("") 를 사용 가능.
@@ -20,15 +20,15 @@ public class BeHttpPrgpatternController {
     	
     	model.addAttribute("value", modelMap.get("value"));
     	
-    	return "be/http/prgpattern/index";
+    	return "logic/http/prgpattern/index";
     }
     
-    @PostMapping("/template/be/http/prg-pattern/submit-post")
+    @PostMapping("/template/logic/http/prg-pattern/submit-post")
 	public String submitPost(HttpServletRequest request, RedirectAttributes redirectAttributes) {
     	
     	redirectAttributes.addFlashAttribute("value", request.getParameter("value"));
     	
-    	return "redirect:/template" + "/be/http/prg-pattern/index";
+    	return "redirect:/template" + "/logic/http/prg-pattern/index";
     }
 
 }
