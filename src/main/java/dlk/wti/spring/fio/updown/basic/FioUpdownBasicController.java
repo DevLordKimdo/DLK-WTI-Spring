@@ -24,13 +24,13 @@ public class FioUpdownBasicController {
     @Value("${location.fio.path}")
     private String fioPath;
 	
-	@GetMapping({"/fio/updown/basic","/fio/updown/basic/form"})
+	@GetMapping({"/template/fio/updown/basic","/template/fio/updown/basic/form"})
 	public String form() {
 		
 		return "fio/updown/basic/form";
 	}
 
-    @GetMapping("/fio/updown/basic/sample-download")
+    @GetMapping("/template/fio/updown/basic/sample-download")
     public void sampleDownload(HttpServletResponse response) throws IOException {
         // 다운로드 파일 경로 지정
         final String sampleFile = fioPath + "/sample.png";
@@ -38,23 +38,23 @@ public class FioUpdownBasicController {
     	fioUpdownBasicService.sampleDownload(response, sampleFile);
     }
 	
-	@PostMapping("/fio/updown/basic/single-upload")
+	@PostMapping("/template/fio/updown/basic/single-upload")
 	public String SingleUpload(@RequestParam("singleUpload") MultipartFile file) throws IOException {
 				
     	fioUpdownBasicService.singleUpload(file, fioPath);
 
-		return "redirect:/fio/updown/basic/form";
+		return "redirect:/template" + "/fio/updown/basic/form";
 	}
 	
-	@PostMapping("/fio/updown/basic/multi-upload")
+	@PostMapping("/template/fio/updown/basic/multi-upload")
 	public String multiUpload(@RequestParam("multiUpload") List<MultipartFile> files)  throws IOException {
 		
     	fioUpdownBasicService.multiUpload(files, fioPath);
 		
-		return "redirect:/fio/updown/basic/form";
+		return "redirect:/template" + "/fio/updown/basic/form";
 	}
 	
-	@PostMapping("/file-io/basic/delete-target")
+	@PostMapping("/template/file-io/basic/delete-target")
 	public String deleteTarget(HttpServletRequest request) throws IOException {
 		        
 		// 삭제 대상 파일 이름
@@ -62,15 +62,15 @@ public class FioUpdownBasicController {
 		
 		fioUpdownBasicService.deleteTarget(fioPath, deleteTarget);
 		
-        return "redirect:/file-io/basic/form";
+        return "redirect:/template" + "/file-io/basic/form";
 	}
 	
-	@GetMapping("/fio/updown/basic/delete-all")
+	@GetMapping("/template/fio/updown/basic/delete-all")
 	public String deleteAll() throws IOException {
 				
         fioUpdownBasicService.deleteAll(fioPath);
 
-		return "redirect:/fio/updown/basic/form";
+		return "redirect:/template" + "/fio/updown/basic/form";
 	}
 }
 

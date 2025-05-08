@@ -9,13 +9,13 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class FeFormInputdisable {
 	
-	@GetMapping({"/fe/form/input-disable","/fe/form/input-disable/form"})
+	@GetMapping({"/template/fe/form/input-disable","/template/fe/form/input-disable/form"})
 	public String form() {
 
 		return "fe/form/inputdisable/form";
 	}
 	
-	@PostMapping("/fe/form/input-disable/submit")
+	@PostMapping("/template/fe/form/input-disable/submit")
 	public String submit(HttpServletRequest request) {
 		
 		System.out.println( "");
@@ -45,7 +45,7 @@ public class FeFormInputdisable {
 	    System.out.println( "textarea Readonly Value : " +  request.getParameter("textareaReadonly") );
 	    System.out.println( "textarea Disabled Value : " +  request.getParameter("textareaDisabled") );
 	    
-		return "redirect:/fe/form/input-disable/form";
+		return "redirect:/template" + "/fe/form/input-disable/form";
 	}
 
 }

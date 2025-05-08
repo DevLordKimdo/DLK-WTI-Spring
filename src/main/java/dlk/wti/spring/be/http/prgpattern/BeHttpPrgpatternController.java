@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class BeHttpPrgpatternController {
 	
-    @GetMapping({"/be/http/prg-pattern","/be/http/prg-pattern/index"})
+    @GetMapping({"/template/be/http/prg-pattern","/template/be/http/prg-pattern/index"})
 	public String index(ModelMap modelMap, Model model) {
     	
     	// 다른 방식으로 메소드 파라미터에 ModelMap 대신 @ModelAttribute("") 를 사용 가능.
@@ -23,12 +23,12 @@ public class BeHttpPrgpatternController {
     	return "be/http/prgpattern/index";
     }
     
-    @PostMapping("/be/http/prg-pattern/submit-post")
+    @PostMapping("/template/be/http/prg-pattern/submit-post")
 	public String submitPost(HttpServletRequest request, RedirectAttributes redirectAttributes) {
     	
     	redirectAttributes.addFlashAttribute("value", request.getParameter("value"));
     	
-    	return "redirect:/be/http/prg-pattern/index";
+    	return "redirect:/template" + "/be/http/prg-pattern/index";
     }
 
 }

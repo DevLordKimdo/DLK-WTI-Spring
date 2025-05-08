@@ -17,13 +17,13 @@ public class FeFormRowsubmitController {
     private final FeFormRowsubmitService feFormRowsubmitService;
     public FeFormRowsubmitController(FeFormRowsubmitService feFormRowsubmitService) {this.feFormRowsubmitService = feFormRowsubmitService;}
 	
-	@GetMapping({"/fe/form/row-submit","/fe/form/row-submit/form"})
+	@GetMapping({"/template/fe/form/row-submit","/template/fe/form/row-submit/form"})
 	public String form() {
 		
 		return "fe/form/rowsubmit/form";
 	}
 	
-	@PostMapping("/fe/form/row-submit/submit")
+	@PostMapping("/template/fe/form/row-submit/submit")
 	public String submit(@RequestParam("title")   List<String> title, 
 			             @RequestParam("name")    List<String> name,
 			             @RequestParam("content") List<String> content) {
@@ -34,17 +34,17 @@ public class FeFormRowsubmitController {
 			System.out.println(list.getTitle() + " " + list.getName() + " " + list.getContent());
 		}
 		
-		return "redirect:/fe/form/row-submit/form";
+		return "redirect:/template" + "/fe/form/row-submit/form";
 	}
 	
-	@GetMapping("/fe/form/row-submit/form-fetch")
+	@GetMapping("/template/fe/form/row-submit/form-fetch")
 	public String formFetch() {
 		
 		return "fe/form/rowsubmit/formfetch";
 	}
 	
 	
-	@PostMapping("/fe/form/row-submit/submit-fetch")
+	@PostMapping("/template/fe/form/row-submit/submit-fetch")
 	@ResponseBody
 	public String submitFetch(@RequestBody Map<String, List<DbCrudDTO>> request) {
 		

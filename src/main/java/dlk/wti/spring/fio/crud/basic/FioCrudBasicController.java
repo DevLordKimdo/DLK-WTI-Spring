@@ -22,7 +22,7 @@ public class FioCrudBasicController {
     @Value("${location.fio.path}")
     private String fioPath;
 	
-	@GetMapping({"/fio/crud/basic","/fio/crud/basic/list"})
+	@GetMapping({"/template/fio/crud/basic","/template/fio/crud/basic/list"})
 	public String list(Model model) throws IOException {
 		
 		List<FioCrudDTO> list = fioCrudBasicService.list(fioPath);
@@ -32,21 +32,21 @@ public class FioCrudBasicController {
 		return "fio/crud/basic/list";
 	}
 	
-	@GetMapping("fio/crud/basic/create")
+	@GetMapping("/template/fio/crud/basic/create")
 	public String create() {
 		
 		return "fio/crud/basic/create";
 	}
 	
-	@PostMapping("fio/crud/basic/create")
+	@PostMapping("/template/fio/crud/basic/create")
 	public String create(FioCrudDTO fioCrudDTO) throws IOException {
 		
 		fioCrudBasicService.create(fioPath,fioCrudDTO);
 		
-		return "redirect:/fio/crud/basic/list";
+		return "redirect:/template" + "/fio/crud/basic/list";
 	}
 	
-	@GetMapping("fio/crud/basic/read/{name}")
+	@GetMapping("/template/fio/crud/basic/read/{name}")
 	public String read(@PathVariable("name") String name, Model model) throws IOException {
 		
 		FioCrudDTO fioCrudDTO = fioCrudBasicService.read(fioPath, name);
@@ -55,21 +55,21 @@ public class FioCrudBasicController {
 		return "fio/crud/basic/read";
 	}
 	
-	@PostMapping("fio/crud/basic/update/{preName}")
+	@PostMapping("/template/fio/crud/basic/update/{preName}")
 	public String update(@PathVariable("preName") String preName, FioCrudDTO fioCrudDTO) throws IOException {
 
 		fioCrudBasicService.update(fioPath, preName, fioCrudDTO);
 		String name = fioCrudDTO.getName();
 		
-		return "redirect:/fio/crud/basic/read/" + name;
+		return "redirect:/template" + "/fio/crud/basic/read/" + name;
 	}
 	
-	@GetMapping("fio/crud/basic/delete/{name}")
+	@GetMapping("/template/fio/crud/basic/delete/{name}")
 	public String delete(@PathVariable("name") String name) throws IOException {
 		
 		fioCrudBasicService.delete(fioPath, name);
 		
-		return "redirect:/fio/crud/basic/list";
+		return "redirect:/template" + "/fio/crud/basic/list";
 	}
 	
 }
