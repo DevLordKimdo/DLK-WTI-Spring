@@ -12,7 +12,7 @@ public class AuthSessionBasicService {
 		
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(3600);
-		session.setAttribute("session-name", "value");
+		session.setAttribute("sessionName", "value");
 		
 	}
 	
@@ -20,10 +20,10 @@ public class AuthSessionBasicService {
 		
 		HttpSession session = request.getSession();
 		
-		System.out.println(session.getAttribute("session-name"));
+		System.out.println(session.getAttribute("sessionName"));
 		
-		     if (session.getAttribute("session-name") == null) { System.out.println("세션이 없습니다."); }
-		else if (session.getAttribute("session-name") == "value") { System.out.println("유효한 세션입니다."); }
+		     if (session.getAttribute("sessionName") == null) { System.out.println("세션이 없습니다."); }
+		else if (session.getAttribute("sessionName") == "value") { System.out.println("유효한 세션입니다."); }
 		else { System.out.println("유효한 세션이 아닙니다."); }
 
 	}
