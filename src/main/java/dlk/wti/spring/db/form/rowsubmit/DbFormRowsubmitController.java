@@ -13,20 +13,20 @@ public class DbFormRowsubmitController {
     private final DbFormRowsubmitService dbFormRowsubmitService;
     public DbFormRowsubmitController(DbFormRowsubmitService dbFormRowsubmitService) {this.dbFormRowsubmitService = dbFormRowsubmitService;}
 	
-	@GetMapping({"/template/db/form/row-submit","/template/db/form/row-submit/form"})
+	@GetMapping({"/tmpl/db/form/row-submit","/tmpl/db/form/row-submit/form"})
 	public String form() {
 		
 		return "db/form/rowsubmit/form";
 	}
 	
-	@PostMapping("/template/db/form/row-submit/submit")
+	@PostMapping("/tmpl/db/form/row-submit/submit")
 	public String submit(@RequestParam("title")   List<String> title, 
 			             @RequestParam("name")    List<String> name,
 			             @RequestParam("content") List<String> content) {
 		
 		dbFormRowsubmitService.submit(title, name, content);
 		
-		return "redirect:/template" + "/fe/form/row-submit/form";
+		return "redirect:/tmpl" + "/fe/form/row-submit/form";
 	}
 	
 

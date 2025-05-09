@@ -17,13 +17,13 @@ public class UixFormRowsubmitController {
     private final UixFormRowsubmitService uixFormRowsubmitService;
     public UixFormRowsubmitController(UixFormRowsubmitService uixFormRowsubmitService) {this.uixFormRowsubmitService = uixFormRowsubmitService;}
 	
-	@GetMapping({"/template/uix/form/row-submit","/template/uix/form/row-submit/form"})
+	@GetMapping({"/tmpl/uix/form/row-submit","/tmpl/uix/form/row-submit/form"})
 	public String form() {
 		
 		return "uix/form/rowsubmit/form";
 	}
 	
-	@PostMapping("/template/uix/form/row-submit/submit")
+	@PostMapping("/tmpl/uix/form/row-submit/submit")
 	public String submit(@RequestParam("title")   List<String> title, 
 			             @RequestParam("name")    List<String> name,
 			             @RequestParam("content") List<String> content) {
@@ -34,17 +34,17 @@ public class UixFormRowsubmitController {
 			System.out.println(list.getTitle() + " " + list.getName() + " " + list.getContent());
 		}
 		
-		return "redirect:/template" + "/uix/form/row-submit/form";
+		return "redirect:/tmpl" + "/uix/form/row-submit/form";
 	}
 	
-	@GetMapping("/template/uix/form/row-submit/form-fetch")
+	@GetMapping("/tmpl/uix/form/row-submit/form-fetch")
 	public String formFetch() {
 		
 		return "uix/form/rowsubmit/formfetch";
 	}
 	
 	
-	@PostMapping("/template/uix/form/row-submit/submit-fetch")
+	@PostMapping("/tmpl/uix/form/row-submit/submit-fetch")
 	@ResponseBody
 	public String submitFetch(@RequestBody Map<String, List<DbCrudDTO>> request) {
 		

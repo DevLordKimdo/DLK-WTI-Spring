@@ -22,7 +22,7 @@ public class FioBoardBasicController {
     @Value("${location.fio.path}")
     private String fioPath;
 
-	@GetMapping({"/template/fio/board/basic","/template/fio/board/basic/list"})
+	@GetMapping({"/tmpl/fio/board/basic","/tmpl/fio/board/basic/list"})
 	public String list(Model model) {
 		
 		List<FioBoardDTO> list = fioBoardBasicService.list();
@@ -31,7 +31,7 @@ public class FioBoardBasicController {
 		return "fio/board/basic/list";
 	}
 	
-	@PostMapping("/template/fio/board/basic/upload")
+	@PostMapping("/tmpl/fio/board/basic/upload")
 	public String upload(@RequestParam("upload") List<MultipartFile> files) {
 				
 		try {
@@ -40,7 +40,7 @@ public class FioBoardBasicController {
             e.printStackTrace();
         }
 
-		return "redirect:/template" + "/fio/board/basic/list";
+		return "redirect:/tmpl" + "/fio/board/basic/list";
 	}
 }
 

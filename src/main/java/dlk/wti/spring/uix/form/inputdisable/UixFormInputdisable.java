@@ -9,13 +9,13 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 public class UixFormInputdisable {
 	
-	@GetMapping({"/template/uix/form/input-disable","/template/uix/form/input-disable/form"})
+	@GetMapping({"/tmpl/uix/form/input-disable","/tmpl/uix/form/input-disable/form"})
 	public String form() {
 
 		return "uix/form/inputdisable/form";
 	}
 	
-	@PostMapping("/template/uix/form/input-disable/submit")
+	@PostMapping("/tmpl/uix/form/input-disable/submit")
 	public String submit(HttpServletRequest request) {
 		
 		System.out.println( "");
@@ -45,7 +45,7 @@ public class UixFormInputdisable {
 	    System.out.println( "textarea Readonly Value : " +  request.getParameter("textareaReadonly") );
 	    System.out.println( "textarea Disabled Value : " +  request.getParameter("textareaDisabled") );
 	    
-		return "redirect:/template" + "/uix/form/input-disable/form";
+		return "redirect:/tmpl" + "/uix/form/input-disable/form";
 	}
 
 }

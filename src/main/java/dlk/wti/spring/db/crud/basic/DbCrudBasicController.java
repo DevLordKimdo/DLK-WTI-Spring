@@ -16,7 +16,7 @@ public class DbCrudBasicController {
     private final DbCrudBasicService dbCrudBasicService;
     public DbCrudBasicController(DbCrudBasicService dbCrudBasicService) {this.dbCrudBasicService = dbCrudBasicService;}
     
-	@GetMapping({"/template/db/crud/basic","/template/db/crud/basic/list"})
+	@GetMapping({"/tmpl/db/crud/basic","/tmpl/db/crud/basic/list"})
 	public String list(Model model) {
 						
 		List<DbCrudDTO> list = dbCrudBasicService.list();
@@ -25,21 +25,21 @@ public class DbCrudBasicController {
 		return "db/crud/basic/list";
 	}
 	
-	@GetMapping("/template/db/crud/basic/create")
+	@GetMapping("/tmpl/db/crud/basic/create")
 	public String create() {
 		
 		return "db/crud/basic/create";
 	}
 	
-	@PostMapping("/template/db/crud/basic/create")
+	@PostMapping("/tmpl/db/crud/basic/create")
 	public String create(DbCrudDTO dbCrudDTO) {
 		
 		dbCrudBasicService.create(dbCrudDTO);
 		
-		return "redirect:/template" + "/db/crud/basic/list";
+		return "redirect:/tmpl" + "/db/crud/basic/list";
 	}
 	
-	@GetMapping("/template/db/crud/basic/read/{idx}")
+	@GetMapping("/tmpl/db/crud/basic/read/{idx}")
 	public String read(@PathVariable("idx") String idx, Model model) {
 		
 		dbCrudBasicService.updateHit(idx);
@@ -49,21 +49,21 @@ public class DbCrudBasicController {
 		return "db/crud/basic/read";
 	}
 	
-	@PostMapping("/template/db/crud/basic/update/{idx}")
+	@PostMapping("/tmpl/db/crud/basic/update/{idx}")
 	public String update(@PathVariable("idx") String idx, DbCrudDTO dbCrudDTO) {
 						
 		dbCrudDTO.setIdx(idx);
 		dbCrudBasicService.update(dbCrudDTO);
 		
-		return "redirect:/template" + "/db/crud/basic/read/" + idx;
+		return "redirect:/tmpl" + "/db/crud/basic/read/" + idx;
 	}
 	
-	@GetMapping("/template/db/crud/basic/delete/{idx}")
+	@GetMapping("/tmpl/db/crud/basic/delete/{idx}")
 	public String delete(@PathVariable("idx") String idx) {
 		
 		dbCrudBasicService.delete(idx);
 		
-		return "redirect:/template" + "/db/crud/basic/list";
+		return "redirect:/tmpl" + "/db/crud/basic/list";
 	}
 	
 }

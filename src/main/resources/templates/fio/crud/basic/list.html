@@ -24,14 +24,14 @@
 	    <tbody>
 		    <tr th:each="list: ${list}">
 		    	<td th:text="${list.listNo}"></td>
-				<td><a th:text="${list.name}" th:href="@{|/template/fio/crud/basic/read/${list.name}|}"></a></td>
+				<td><a th:text="${list.name}" th:href="@{|/tmpl/fio/crud/basic/read/${list.name}|}"></a></td>
 				<td th:text="${list.extension}"></td>
 				<td th:text="${list.size}"></td>
 		    </tr>
 	    </tbody>
 	    <tfoot>
 			<tr>
-				<td><a href="/template/fio/crud/basic/create"><button>글작성</button></a></td>
+				<td><a href="/tmpl/fio/crud/basic/create"><button>글작성</button></a></td>
 			</tr>
 	    </tfoot>
 	</table>
