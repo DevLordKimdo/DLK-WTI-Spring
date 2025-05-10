@@ -57,4 +57,23 @@
 		  FROM post_board
 		 WHERE idx = #{idx}
 	</delete>
+	
+	<update id="updateMulti" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO">
+		UPDATE post_board SET
+		       title    =  #{title}
+		     , name     =  #{name}
+		     , content  =  #{content}
+		     , hit      =  #{hit}
+		 WHERE IDX     IN  
+	    <foreach item="idx" collection="idxList" open="(" separator="," close=")">
+	        #{idx}
+	    </foreach>
+	</update>
+	
+	<delete id="deleteMulti">
+		DELETE FROM post_board WHERE idx IN
+		<foreach item="idx" collection="list" open="(" separator="," close=")">
+			#{idx}
+		</foreach>
+	</delete>
 </mapper>

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class UixFormInputdisable {
+public class UixFormInputdisableController {
 	
 	@GetMapping({"/tmpl/uix/form/input-disable","/tmpl/uix/form/input-disable/form"})
 	public String form() {
