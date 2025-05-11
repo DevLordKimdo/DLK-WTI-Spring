@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Uix Pagination Basic List (Href)</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<table>
+	    <colgroup>
+	    	<col style="width: 10%;"/>
+	        <col style="width: 40%;"/>
+	        <col style="width: 20%;"/>
+	    </colgroup>
+		<thead>
+		    <tr>
+		        <th>번호</th>
+		        <th>제목</th>
+		        <th>날짜</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+		    <tr th:each="list: ${list}">
+		        <td th:text="${list.idx}"></td>
+		        <td th:text="${list.title}"></td>
+				<td th:text="${list.datetime}"></td>
+		    </tr>
+	    </tbody>
+	    <tfoot>
+			<tr>
+				<!-- 페이징 처리. 필요시 모듈화 -->
+				<td colspan="3" style="text-align:center;">
+					<div>
+						<!-- 이전 페이지 묶음으로 가기 버튼 -->
+						<span th:if="${page.isHasPrevPage()}">
+							<a th:href="@{|/tmpl/uix/pagination/basic/list/${page.startPageIndex - 1}|}">PREV</a>
+						</span>
+						
+						<!-- 페이징 목록 출력 -->
+						<span th:each="pageNum : ${#numbers.sequence(page.startPageIndex, page.endPageIndex)}">
+							<!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같지 않을 경우 하이퍼링크를 적용해 출력 -->
+							<span th:if="${pageNum != page.currentPageIndex}">
+								<a th:href="@{|/tmpl/uix/pagination/basic/list/${pageNum}|}" th:text="${pageNum}"></a>
+							</span>
+							<!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같을 경우 번호만 출력 -->
+							<span th:unless="${pageNum != page.currentPageIndex}" th:text="${pageNum}"></span>
+						</span>
+						
+						<!-- 다음 페이지 묶음으로 가기 버튼 -->
+						<span th:if="${page.isHasNextPage()}">
+							<a th:href="@{|/tmpl/uix/pagination/basic/list/${page.endPageIndex + 1}|}">NEXT</a>
+						</span>
+					</div>
+				</td>
+			</tr>
+	    </tfoot>
+	</table>
+</body>
+</html>
+<!-- 페이징 처리 시 모든 버튼 항목을 href(하이퍼링크) 로 설정한 화면 -->
+<!-- 자바스크립트 POST 전송 대신 하이퍼링크만을 이용해 페이징 처리가 가능하다는 것을 보여주는 화면 -->
+<!-- 하지만 대부분 실무환경 에서는 자바스크립트 함수를 이용해 POST 형식으로 전송하는 처리구조를 쓰기 때문에 해당 구성은 거의 쓰지 않음. -->

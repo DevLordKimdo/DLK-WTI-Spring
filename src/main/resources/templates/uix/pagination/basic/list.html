@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Uix Pagination Basic List</title>
+</head>
+<link rel="stylesheet" href="/css/styles.css">
+<body>
+	<table>
+	    <colgroup>
+	    	<col style="width: 10%;"/>
+	        <col style="width: 40%;"/>
+	        <col style="width: 20%;"/>
+	    </colgroup>
+		<thead>
+		    <tr>
+		        <th>번호</th>
+		        <th>제목</th>
+		        <th>날짜</th>
+		    </tr>
+	    </thead>
+	    <tbody>
+		    <tr th:each="list: ${list}">
+		        <td th:text="${list.idx}"></td>
+		        <td th:text="${list.title}"></td>
+				<td th:text="${list.datetime}"></td>
+		    </tr>
+	    </tbody>
+	    <tfoot>
+			<tr>
+				<!-- 페이징 처리 -->
+				<td colspan="3" style="text-align:center;">
+					<div>
+						<!-- 이전 페이지 묶음으로 가기 버튼 -->
+						<span th:if="${page.isHasPrevPage()}">
+							<span th:onclick="@{|fn_changePage(${page.startPageIndex - 1})|}" style="cursor: pointer;">PREV</span>
+						</span>
+						
+						<!-- 페이징 목록 출력 -->
+						<span th:each="pageNum : ${#numbers.sequence(page.startPageIndex, page.endPageIndex)}">
+							<!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같지 않을 경우 하이퍼링크를 적용해 출력 -->
+							<span th:if="${pageNum != page.currentPageIndex}">
+								<span th:onclick="@{|fn_changePage(${pageNum})|}" th:text="${pageNum}" style="cursor: pointer;"></span>
+							</span>
+							<!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같을 경우 번호만 출력 -->
+							<span th:unless="${pageNum != page.currentPageIndex}" th:text="${pageNum}"></span>
+						</span>
+						
+						<!-- 다음 페이지 묶음으로 가기 버튼 -->
+						<span th:if="${page.isHasNextPage()}">
+							<span th:onclick="@{|fn_changePage(${page.endPageIndex + 1})|}" style="cursor: pointer;">NEXT</span>
+						</span>
+					</div>
+				</td>
+			</tr>
+	    </tfoot>
+	</table>
+	<form name="form">
+		<input type="hidden" name="currentPage">
+	</form>
+</body>
+<Script>
+	function fn_changePage(currentPage) {
+		document.form.action = "/tmpl/uix/pagination/basic/list/" + currentPage;
+		document.form.method = "POST";
+		document.form.submit();
+	}
+</Script>
+</html>
