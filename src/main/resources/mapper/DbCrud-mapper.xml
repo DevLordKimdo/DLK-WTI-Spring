@@ -64,7 +64,7 @@
 		     , name     =  #{name}
 		     , content  =  #{content}
 		     , hit      =  #{hit}
-		 WHERE IDX     IN  
+		 WHERE idx     IN  
 	    <foreach item="idx" collection="idxList" open="(" separator="," close=")">
 	        #{idx}
 	    </foreach>
