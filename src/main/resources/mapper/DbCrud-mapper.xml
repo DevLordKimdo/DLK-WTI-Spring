@@ -76,4 +76,21 @@
 			#{idx}
 		</foreach>
 	</delete>
+	
+	<insert id="creaetReturnIdx" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO" useGeneratedKeys="true" keyProperty="idx">
+		INSERT INTO post_board (
+			   title
+			 , content
+			 , name
+			 , datetime
+		     , hit
+		)
+		values (
+			  #{title}
+			, #{content}
+			, #{name}
+			, datetime('now', 'localtime')
+			, '0'
+		)
+	</insert>
 </mapper>
