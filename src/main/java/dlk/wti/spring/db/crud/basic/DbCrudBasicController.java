@@ -65,5 +65,13 @@ public class DbCrudBasicController {
 		
 		return "redirect:/tmpl" + "/db/crud/basic/list";
 	}
-	
 }
+
+// 의존성 주입 하는 방법
+// 첫번째(현재 방법) - 생성자 주입방법. final로 불변성 객체로 선언할 수 있음.
+// private final DbCrudBasicService dbCrudBasicService;
+// public DbCrudBasicController(DbCrudBasicService dbCrudBasicService) {this.dbCrudBasicService = dbCrudBasicService;}
+//
+// 두번째(@Autowired 어노테이션) - final을 안쓰기 때문에 불변성을 보장하지 못하고 Spring 프레임워크 의존도를 높이는 단점이 있음.
+// @Autowired
+// private DbCrudBasicService dbCrudBasicService;
