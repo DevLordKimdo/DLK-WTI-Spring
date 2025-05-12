@@ -7,23 +7,29 @@
 <link rel="stylesheet" href="/css/styles.css">
 <body>
 	<table>
-	    <colgroup>
+	    <colgroup> 
 	    	<col style="width: 10%;"/>
 	        <col style="width: 40%;"/>
 	        <col style="width: 20%;"/>
+	        <col style="width: 20%;"/>
+	        <col style="width: 10%;"/>
 	    </colgroup>
 		<thead>
 		    <tr>
 		        <th>번호</th>
 		        <th>제목</th>
+		        <th>이름</th>
 		        <th>날짜</th>
+		        <th>조회</th>
 		    </tr>
 	    </thead>
 	    <tbody>
 		    <tr th:each="list: ${list}">
 		        <td th:text="${list.idx}"></td>
 		        <td th:text="${list.title}"></td>
+				<td th:text="${list.name}"></td>
 				<td th:text="${list.datetime}"></td>
+		        <td th:text="${list.hit}"></td>
 		    </tr>
 	    </tbody>
 	    <tfoot>
@@ -38,11 +44,11 @@
 						
 						<!-- 페이징 목록 출력 -->
 						<span th:each="pageNum : ${#numbers.sequence(page.startPageIndex, page.endPageIndex)}">
-							<!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같지 않을 경우 하이퍼링크를 적용해 출력 -->
+							<!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같지 않을 경우 버튼을 누르면 해당 페이지로 이동. -->
 							<span th:if="${pageNum != page.currentPageIndex}">
 								<a th:href="@{|/tmpl/uix/pagination/basic/list/${pageNum}|}" th:text="${pageNum}"></a>
 							</span>
-							<!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같을 경우 번호만 출력 -->
+							<!-- 출력된 페이지와 현재 보고있는 페이지 번호가 같을 경우 버튼을 누를 수 없음. -->
 							<span th:unless="${pageNum != page.currentPageIndex}" th:text="${pageNum}"></span>
 						</span>
 						

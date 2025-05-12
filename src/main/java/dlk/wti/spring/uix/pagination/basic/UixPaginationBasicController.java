@@ -17,9 +17,14 @@ public class UixPaginationBasicController {
     private final UixPaginationBasicService uixPaginationBasicService;
     public UixPaginationBasicController(UixPaginationBasicService uixPaginationBasicService) {this.uixPaginationBasicService = uixPaginationBasicService;}
 
-    @GetMapping("/tmpl/uix/pagination/basic/list/{currentPageIndex}")
-	public String getList(@PathVariable("currentPageIndex") int currentPageIndex , Model model) {
+    @GetMapping({"/tmpl/uix/pagination/basic"
+    			,"/tmpl/uix/pagination/basic/list"
+    			,"/tmpl/uix/pagination/basic/list/{currentPageIndex}"})
+	public String getList(@PathVariable(value = "currentPageIndex", required = false) Integer currentPageIndex , Model model) {
 
+    	// URL에 페이지 값이 매겨지지 않은 상태로 들어왔을 경우 초기 페이지 값 1을 지정함
+    	if(currentPageIndex == null) { currentPageIndex = 1; }
+    	
 		int count = uixPaginationBasicService.count();
 		int postsPerPage = 10;
 		int pageStartIndex = (currentPageIndex - 1) * postsPerPage;
