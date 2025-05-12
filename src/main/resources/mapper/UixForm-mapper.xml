@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UixForm">
+	<insert id="createCopy">
+		INSERT INTO post_board (
+			   title
+			 , content
+			 , name
+		) SELECT title
+			   , content
+			   , name
+		  FROM post_board
+		 WHERE idx IN
+	    <foreach item="idx" collection="list" open="(" separator="," close=")">
+	        #{idx}
+	    </foreach>
+	</insert>
+
+	<update id="updateMulti" parameterType="dlk.wti.spring.uix.form.dto.UixFormDTO">
+		UPDATE post_board SET
+		       title    =  #{title}
+		     , name     =  #{name}
+		     , content  =  #{content}
+		     , hit      =  #{hit}
+		 WHERE idx     IN  
+	    <foreach item="idx" collection="idxList" open="(" separator="," close=")">
+	        #{idx}
+	    </foreach>
+	</update>
+	
+	<delete id="deleteMulti">
+		DELETE FROM post_board WHERE idx IN
+		<foreach item="idx" collection="list" open="(" separator="," close=")">
+			#{idx}
+		</foreach>
+	</delete>
+</mapper>

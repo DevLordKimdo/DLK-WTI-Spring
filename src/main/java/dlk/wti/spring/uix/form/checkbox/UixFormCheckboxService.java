@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import dlk.wti.spring.db.crud.dto.DbCrudDTO;
+import dlk.wti.spring.uix.form.dto.UixFormDTO;
 
 @Service
 public class UixFormCheckboxService {
@@ -12,20 +12,17 @@ public class UixFormCheckboxService {
     private final UixFormCheckboxRepository uixFormCheckboxRepository;
     public UixFormCheckboxService(UixFormCheckboxRepository uixFormCheckboxRepository) {this.uixFormCheckboxRepository = uixFormCheckboxRepository;}
     
-	public List<DbCrudDTO> list(){
+	public List<UixFormDTO> list(){
 		return uixFormCheckboxRepository.list();
 	}
 	
 	public void copy(List<String> checkIdx) {
-		for(String idx : checkIdx) {
-			DbCrudDTO dbCrudDTO = uixFormCheckboxRepository.read(idx);
-			uixFormCheckboxRepository.create(dbCrudDTO);
-		}
+		uixFormCheckboxRepository.copy(checkIdx);
 	}
 	
-	public void update(List<String> checkIdx, DbCrudDTO dbCrudDTO) {
-		dbCrudDTO.setIdxList(checkIdx);
-		uixFormCheckboxRepository.update(dbCrudDTO);
+	public void update(List<String> checkIdx, UixFormDTO uixFormDTO) {
+		uixFormDTO.setIdxList(checkIdx);
+		uixFormCheckboxRepository.update(uixFormDTO);
 	}
 	
 	public void delete(List<String> checkIdx) {

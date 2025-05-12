@@ -1,7 +1,5 @@
 package dlk.wti.spring.db.crud.dto;
 
-import java.util.List;
-
 public class DbCrudDTO {
 	
 	private String idx;
@@ -10,7 +8,6 @@ public class DbCrudDTO {
 	private String name;
 	private String datetime;
 	private String hit;
-	private List<String> idxList;
 	
 	public String getIdx() {
 		return idx;
@@ -47,12 +44,5 @@ public class DbCrudDTO {
 	}
 	public void setHit(String hit) {
 		this.hit = hit;
-	}
-	public List<String> getIdxList() {
-		return idxList;
-	}
-	public void setIdxList(List<String> idxList) {
-		this.idxList = idxList;
-	}
-	
+	}	
 }

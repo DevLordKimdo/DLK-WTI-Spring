@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dlk.wti.spring.db.crud.dto.DbCrudDTO;
+import dlk.wti.spring.uix.form.dto.UixFormDTO;
 
 @Controller
 public class UixFormCheckboxController {
@@ -19,7 +19,7 @@ public class UixFormCheckboxController {
 	@GetMapping({"/tmpl/uix/form/checkbox","/tmpl/uix/form/checkbox/list"})
 	public String list(Model model) {
 		
-		List<DbCrudDTO> list = uixFormCheckboxService.list();
+		List<UixFormDTO> list = uixFormCheckboxService.list();
     	model.addAttribute("list", list);
 
 		return "uix/form/checkbox/list";
@@ -36,9 +36,9 @@ public class UixFormCheckboxController {
 	}
 	
 	@PostMapping("/tmpl/uix/form/checkbox/update")
-	public String update(@RequestParam(value = "checkIdx", required = false, defaultValue = "") List<String> checkIdx, DbCrudDTO dbCrudDTO) {
+	public String update(@RequestParam(value = "checkIdx", required = false, defaultValue = "") List<String> checkIdx, UixFormDTO uixFormDTO) {
 
-		uixFormCheckboxService.update(checkIdx, dbCrudDTO);
+		uixFormCheckboxService.update(checkIdx, uixFormDTO);
 		
 		return "redirect:/tmpl" + "/uix/form/checkbox/list";
 	}
