@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DbSearch">
+	<select id="list" resultType="dlk.wti.spring.db.search.dto.DbSearchDTO">
+		SELECT idx
+		     , title
+		     , content
+		     , name
+		     , datetime
+		     , hit
+		  FROM post_board
+		 WHERE 1 = 1
+		<if test="searchKeyword != ''">
+			<choose>
+				<when test="searchOption == 'title'">
+					AND title LIKE '%' || #{searchKeyword} || '%'
+				</when>
+				<when test="searchOption == 'content'">
+					AND content LIKE '%' || #{searchKeyword} || '%'
+				</when>
+				<when test="searchOption == 'name'">
+					AND name LIKE '%' || #{searchKeyword} || '%'
+				</when>
+			</choose>
+		</if>
+		<if test="(searchDateStart != null and searchDateStart != '') and (searchDateEnded != null and searchDateEnded != '')">
+			AND datetime BETWEEN #{searchDateStart} AND #{searchDateEnded}
+		</if>
+	</select>
+</mapper>
