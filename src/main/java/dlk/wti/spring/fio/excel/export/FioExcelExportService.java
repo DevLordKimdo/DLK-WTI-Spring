@@ -4,10 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +22,19 @@ public class FioExcelExportService {
 
         Workbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Data");
-        
+        // 스타일 설정 (필요하면 적용)
+//        CellStyle cellStyle = workbook.createCellStyle();
+//        cellStyle.setFillForegroundColor(IndexedColors.GREY_25_PERCENT.getIndex());
+//        cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+//        cellStyle.setAlignment(HorizontalAlignment.CENTER);
+//        cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
         // 헤더 생성
         Row headerRow = sheet.createRow(0);
         String[] columns = {"idx", "title", "content","name", "datetime", "hit"}; // DbCrudDTO의 필드에 맞게 수정
         for (int i = 0; i < columns.length; i++) {
             Cell cell = headerRow.createCell(i);
             cell.setCellValue(columns[i]);
+//            cell.setCellStyle(cellStyle);
         }
         // 데이터 채우기
         int rowNum = 1;
