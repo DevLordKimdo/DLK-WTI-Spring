@@ -19,8 +19,9 @@ repositories {
 
 dependencies {
 	implementation     'org.springframework.boot:spring-boot-starter-web' // spring-web
-	implementation     'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation     'org.springframework.boot:spring-boot-starter-thymeleaf' // thymeleaf
     implementation     'org.springframework.boot:spring-boot-starter-jdbc' // jdbc
+    implementation     'org.springframework.boot:spring-boot-starter-websocket' // websocket
 	implementation     'org.xerial:sqlite-jdbc:3.42.0.0' // SQLite
 	implementation     'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2' // Mybatis
 
