@@ -12,6 +12,6 @@ public class DbCrudReturnidxRepository {
 	public DbCrudReturnidxRepository(SqlSessionTemplate sql) {this.sql = sql;}
 	
 	public void create(DbCrudDTO dbCrudDTO) {
-		sql.insert("DbCrud.creaetReturnIdx", dbCrudDTO);
+		sql.insert("DbCrud.createReturnIdx", dbCrudDTO);
 	}
 }

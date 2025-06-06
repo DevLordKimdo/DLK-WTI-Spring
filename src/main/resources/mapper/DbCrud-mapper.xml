@@ -77,7 +77,7 @@
 		</foreach>
 	</delete>
 	
-	<insert id="creaetReturnIdx" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO" useGeneratedKeys="true" keyProperty="idx">
+	<insert id="createReturnIdx" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO" useGeneratedKeys="true" keyProperty="idx">
 		INSERT INTO post_board (
 			   title
 			 , content
