@@ -36,9 +36,9 @@ public class UixFormCheckboxController {
 	}
 	
 	@PostMapping("/tmpl/uix/form/checkbox/update")
-	public String update(@RequestParam(value = "checkIdx", required = false, defaultValue = "") List<String> checkIdx, UixFormDTO uixFormDTO) {
+	public String update(UixFormDTO uixFormDTO) {
 
-		uixFormCheckboxService.update(checkIdx, uixFormDTO);
+		uixFormCheckboxService.update(uixFormDTO);
 		
 		return "redirect:/tmpl" + "/uix/form/checkbox/list";
 	}

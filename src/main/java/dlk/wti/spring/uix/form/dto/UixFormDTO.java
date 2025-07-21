@@ -6,13 +6,14 @@ import dlk.wti.spring.db.crud.dto.DbCrudDTO;
 
 public class UixFormDTO extends DbCrudDTO {
 	
-	private List<String> idxList;
+	private List<String> checkIdx;
 
-	public List<String> getIdxList() {
-		return idxList;
-	}
-	public void setIdxList(List<String> idxList) {
-		this.idxList = idxList;
+	public List<String> getCheckIdx() {
+		return checkIdx;
 	}
 
+	public void setCheckIdx(List<String> checkIdx) {
+		this.checkIdx = checkIdx;
+	}
+	
 }

@@ -20,8 +20,7 @@ public class UixFormCheckboxService {
 		uixFormCheckboxRepository.copy(checkIdx);
 	}
 	
-	public void update(List<String> checkIdx, UixFormDTO uixFormDTO) {
-		uixFormDTO.setIdxList(checkIdx);
+	public void update(UixFormDTO uixFormDTO) {
 		uixFormCheckboxRepository.update(uixFormDTO);
 	}
 	

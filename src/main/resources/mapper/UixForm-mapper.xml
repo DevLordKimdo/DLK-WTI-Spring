@@ -24,7 +24,7 @@
 		     , content  =  #{content}
 		     , hit      =  #{hit}
 		 WHERE idx     IN  
-	    <foreach item="idx" collection="idxList" open="(" separator="," close=")">
+	    <foreach item="idx" collection="checkIdx" open="(" separator="," close=")">
 	        #{idx}
 	    </foreach>
 	</update>

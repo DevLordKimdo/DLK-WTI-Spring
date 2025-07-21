@@ -58,25 +58,6 @@
 		 WHERE idx = #{idx}
 	</delete>
 	
-	<update id="updateMulti" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO">
-		UPDATE post_board SET
-		       title    =  #{title}
-		     , name     =  #{name}
-		     , content  =  #{content}
-		     , hit      =  #{hit}
-		 WHERE idx     IN  
-	    <foreach item="idx" collection="idxList" open="(" separator="," close=")">
-	        #{idx}
-	    </foreach>
-	</update>
-	
-	<delete id="deleteMulti">
-		DELETE FROM post_board WHERE idx IN
-		<foreach item="idx" collection="list" open="(" separator="," close=")">
-			#{idx}
-		</foreach>
-	</delete>
-	
 	<insert id="createReturnIdx" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO" useGeneratedKeys="true" keyProperty="idx">
 		INSERT INTO post_board (
 			   title
