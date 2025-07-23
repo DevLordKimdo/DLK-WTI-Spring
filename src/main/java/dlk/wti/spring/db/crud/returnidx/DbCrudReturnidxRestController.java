@@ -23,5 +23,5 @@ public class DbCrudReturnidxRestController {
 		
 		return ResponseEntity.ok("Success");
 	}
-	
+
 }
