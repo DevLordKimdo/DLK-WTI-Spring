@@ -12,19 +12,19 @@ public class DbCrudReturnidxController {
     private final DbCrudReturnidxService dbCrudReturnidxService;
     public DbCrudReturnidxController(DbCrudReturnidxService dbCrudReturnidxService) {this.dbCrudReturnidxService = dbCrudReturnidxService;}
 	
-	@GetMapping({"/tmpl/db/crud/returnidx","/tmpl/db/crud/returnidx/create"})
+	@GetMapping({"/tmpl/db/crud/return-idx","/tmpl/db/crud/return-idx/create"})
 	public String create() {
 		
 		return "db/crud/returnidx/create";
 	}
 	
-	@PostMapping("/tmpl/db/crud/returnidx/create")
+	@PostMapping("/tmpl/db/crud/return-idx/create")
 	public String create(DbCrudDTO dbCrudDTO) {
 
 		dbCrudReturnidxService.create(dbCrudDTO);
 		System.out.println("Return Idx : " + dbCrudDTO.getIdx());
 		
-		return "redirect:/tmpl" + "/db/crud/returnidx/create";
+		return "redirect:/tmpl" + "/db/crud/return-idx/create";
 	}
 
 }
