@@ -25,7 +25,7 @@ public class DbTransactionalBasicController {
 		String errorOption = request.getParameter("errorOption");
 		String transOption = request.getParameter("transOption");
 		
-		if(transOption.equals("Y")) {
+		if(transOption.equals("true")) {
 			dbTransactionalBasicService.createWithTrans(dbCrudDTO, errorOption);
 		} else {
 			dbTransactionalBasicService.createNoneTrans(dbCrudDTO, errorOption);

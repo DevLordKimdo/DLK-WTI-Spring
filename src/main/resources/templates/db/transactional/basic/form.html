@@ -22,8 +22,8 @@
 		let errorCheck = document.form.errorCheck;
 		let transCheck = document.form.transCheck;
 		
-		document.form.errorOption.value = errorCheck.checked ? "Y" : "N";
-		document.form.transOption.value = transCheck.checked ? "Y" : "N";
+		document.form.errorOption.value = errorCheck.checked ? "true" : "false";
+		document.form.transOption.value = transCheck.checked ? "true" : "false";
 		
 		document.form.action = "/tmpl/db/transactional/basic/form";
 		document.form.method = "POST";
