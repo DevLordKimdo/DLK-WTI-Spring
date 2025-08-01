@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import dlk.wti.spring.db.crud.dto.DbCrudDTO;
+
 @Controller
 public class DbFormRowsubmitController {
 	
@@ -23,11 +25,20 @@ public class DbFormRowsubmitController {
 	public String submit(@RequestParam("title")   List<String> title, 
 			             @RequestParam("name")    List<String> name,
 			             @RequestParam("content") List<String> content) {
+
+		List<DbCrudDTO> DbCrudDTO = new ArrayList<>();
 		
-		dbFormRowsubmitService.submit(title, name, content);
+		for (int i = 0; i < title.size(); i++) {
+			DbCrudDTO tempDTO = new DbCrudDTO();
+			tempDTO.setTitle(title.get(i));
+			tempDTO.setName(name.get(i));
+			tempDTO.setContent(content.get(i));
+			DbCrudDTO.add(tempDTO);
+		}
 		
-		return "redirect:/tmpl" + "/fe/form/row-submit/form";
+		dbFormRowsubmitService.submit(DbCrudDTO);
+		
+		return "redirect:/tmpl" + "/db/form/row-submit/form";
 	}
 	
-
 }

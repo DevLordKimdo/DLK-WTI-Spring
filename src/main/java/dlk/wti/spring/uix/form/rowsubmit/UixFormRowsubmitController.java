@@ -14,9 +14,6 @@ import dlk.wti.spring.db.crud.dto.DbCrudDTO;
 @Controller
 public class UixFormRowsubmitController {
 	
-    private final UixFormRowsubmitService uixFormRowsubmitService;
-    public UixFormRowsubmitController(UixFormRowsubmitService uixFormRowsubmitService) {this.uixFormRowsubmitService = uixFormRowsubmitService;}
-	
 	@GetMapping({"/tmpl/uix/form/row-submit","/tmpl/uix/form/row-submit/form"})
 	public String form() {
 		
@@ -28,7 +25,15 @@ public class UixFormRowsubmitController {
 			             @RequestParam("name")    List<String> name,
 			             @RequestParam("content") List<String> content) {
 		
-		List<DbCrudDTO> dbCrudDTO = uixFormRowsubmitService.submit(title, name, content);
+		List<DbCrudDTO> dbCrudDTO = new ArrayList<>();
+		
+		for (int i = 0; i < title.size(); i++) {
+			DbCrudDTO tempDTO = new DbCrudDTO();
+			tempDTO.setTitle(title.get(i));
+			tempDTO.setName(name.get(i));
+			tempDTO.setContent(content.get(i));
+			dbCrudDTO.add(tempDTO);
+		}
 
 		for(DbCrudDTO list : dbCrudDTO) {
 			System.out.println(list.getTitle() + " " + list.getName() + " " + list.getContent());
