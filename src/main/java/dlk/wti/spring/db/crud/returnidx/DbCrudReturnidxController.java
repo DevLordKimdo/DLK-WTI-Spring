@@ -24,6 +24,9 @@ public class DbCrudReturnidxController {
 		dbCrudReturnidxService.create(dbCrudDTO);
 		System.out.println("Return Idx : " + dbCrudDTO.getIdx());
 		
+		dbCrudReturnidxService.createSelectKey(dbCrudDTO);
+		System.out.println("Return Idx Select Key : " + dbCrudDTO.getIdx());
+		
 		return "redirect:/tmpl" + "/db/crud/return-idx/create";
 	}
 

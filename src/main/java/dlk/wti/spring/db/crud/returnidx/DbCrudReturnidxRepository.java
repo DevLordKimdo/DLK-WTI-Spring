@@ -14,4 +14,8 @@ public class DbCrudReturnidxRepository {
 	public void create(DbCrudDTO dbCrudDTO) {
 		sql.insert("DbCrud.createReturnIdx", dbCrudDTO);
 	}
+	
+	public void createSelectKey(DbCrudDTO dbCrudDTO) {
+		sql.insert("DbCrud.createReturnIdxSelectKey", dbCrudDTO);
+	}
 }

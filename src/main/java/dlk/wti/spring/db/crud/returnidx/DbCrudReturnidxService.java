@@ -13,4 +13,8 @@ public class DbCrudReturnidxService {
 	public void create(DbCrudDTO dbCrudDTO) {
 		dbCrudReturnidxRepository.create(dbCrudDTO);
 	}
+	
+	public void createSelectKey(DbCrudDTO dbCrudDTO) {
+		dbCrudReturnidxRepository.createSelectKey(dbCrudDTO);
+	}
 }

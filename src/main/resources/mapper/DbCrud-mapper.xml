@@ -74,4 +74,26 @@
 			, '0'
 		)
 	</insert>
+	
+	<insert id="createReturnIdxSelectKey" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO">
+		<!-- Select Key를 이용한 방법. -->
+		<!-- order 옵션은 해당 쿼리가 메인쿼리의 전(AFTER)에서 실행할 것인지 후(BEFORE)에서 실행할 것인지를 결정함 -->
+		<selectKey keyProperty="idx" resultType="string" order="AFTER">
+			SELECT CAST(last_insert_rowid() AS TEXT)
+		</selectKey>
+		INSERT INTO post_board (
+			   title
+			 , content
+			 , name
+			 , datetime
+		     , hit
+		)
+		values (
+			  #{title}
+			, #{content}
+			, #{name}
+			, datetime('now', 'localtime')
+			, '0'
+		)
+	</insert>
 </mapper>
