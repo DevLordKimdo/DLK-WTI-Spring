@@ -4,10 +4,10 @@
 <mapper namespace="FioExcel">
 
 	<insert id="excelUpload" parameterType="java.util.List">
-		INSERT INTO post_board ( title , name , content ) 
+		INSERT INTO post_board ( title , username , content ) 
 		VALUES 
 		<foreach collection="list" item="excel" separator=",">
-		    ( #{excel.title} , #{excel.name} , #{excel.content} )
+		    ( #{excel.title} , #{excel.username} , #{excel.content} )
 		</foreach>
 	</insert>
 </mapper>

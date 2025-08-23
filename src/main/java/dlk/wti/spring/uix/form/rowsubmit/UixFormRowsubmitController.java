@@ -21,22 +21,22 @@ public class UixFormRowsubmitController {
 	}
 	
 	@PostMapping("/tmpl/uix/form/row-submit/submit")
-	public String submit(@RequestParam("title")   List<String> title, 
-			             @RequestParam("name")    List<String> name,
-			             @RequestParam("content") List<String> content) {
+	public String submit(@RequestParam("title")    List<String> title, 
+			             @RequestParam("username") List<String> username,
+			             @RequestParam("content")  List<String> content) {
 		
 		List<DbCrudDTO> dbCrudDTO = new ArrayList<>();
 		
 		for (int i = 0; i < title.size(); i++) {
 			DbCrudDTO tempDTO = new DbCrudDTO();
 			tempDTO.setTitle(title.get(i));
-			tempDTO.setName(name.get(i));
+			tempDTO.setUsername(username.get(i));
 			tempDTO.setContent(content.get(i));
 			dbCrudDTO.add(tempDTO);
 		}
 
 		for(DbCrudDTO list : dbCrudDTO) {
-			System.out.println(list.getTitle() + " " + list.getName() + " " + list.getContent());
+			System.out.println(list.getTitle() + " " + list.getUsername() + " " + list.getContent());
 		}
 		
 		return "redirect:/tmpl" + "/uix/form/row-submit/form";
@@ -55,7 +55,7 @@ public class UixFormRowsubmitController {
 		
 		List<DbCrudDTO> dbCrudDTO = request.get("list");
 		for(DbCrudDTO list : dbCrudDTO) {
-			System.out.println(list.getTitle() + " " + list.getName() + " " + list.getContent());
+			System.out.println(list.getTitle() + " " + list.getUsername() + " " + list.getContent());
 		}
 	    
 	    return "Success";

@@ -30,7 +30,7 @@ public class FioExcelExportService {
 //        cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
         // 헤더 생성
         Row headerRow = sheet.createRow(0);
-        String[] columns = {"idx", "title", "content","name", "datetime", "hit"}; // DbCrudDTO의 필드에 맞게 수정
+        String[] columns = {"idx", "title", "content","username", "datetime", "hit"}; // DbCrudDTO의 필드에 맞게 수정
         for (int i = 0; i < columns.length; i++) {
             Cell cell = headerRow.createCell(i);
             cell.setCellValue(columns[i]);
@@ -43,7 +43,7 @@ public class FioExcelExportService {
             row.createCell(0).setCellValue(dto.getIdx());
             row.createCell(1).setCellValue(dto.getTitle());
             row.createCell(2).setCellValue(dto.getContent());
-            row.createCell(3).setCellValue(dto.getName());
+            row.createCell(3).setCellValue(dto.getUsername());
             row.createCell(4).setCellValue(dto.getDatetime());
             row.createCell(5).setCellValue(dto.getHit());
         }

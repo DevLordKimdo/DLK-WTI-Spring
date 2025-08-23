@@ -18,7 +18,7 @@ public class DbTransactionalBasicService {
 		if(errorOption.equals("true")) {
 			DbCrudDTO errorDTO = new DbCrudDTO();
 			errorDTO.setTitle(null);
-			errorDTO.setName(null);
+			errorDTO.setUsername(null);
 			errorDTO.setContent(null);
 			dbTransactionalBasicRepository.create(errorDTO);
 		}
@@ -41,7 +41,7 @@ public class DbTransactionalBasicService {
 		if(errorOption.equals("true")) {
 			DbCrudDTO errorDTO = new DbCrudDTO();
 			errorDTO.setTitle(null);
-			errorDTO.setName(null);
+			errorDTO.setUsername(null);
 			errorDTO.setContent(null);
 			dbTransactionalBasicRepository.create(errorDTO);
 		}

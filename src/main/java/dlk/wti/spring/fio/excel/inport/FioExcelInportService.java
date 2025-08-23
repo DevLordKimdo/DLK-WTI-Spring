@@ -67,7 +67,7 @@ public class FioExcelInportService {
                 for (Cell cell : row) {
                 	switch(cell.getColumnIndex()) {
                 		case 0: tempDTO.setTitle(cell.toString());
-                		case 1: tempDTO.setName (cell.toString());
+                		case 1: tempDTO.setUsername (cell.toString());
                 		case 2: tempDTO.setContent(cell.toString());
                 	}
                 }
@@ -77,7 +77,7 @@ public class FioExcelInportService {
         
         // DTO 순차적으로 출력 (확인용)
         for(DbCrudDTO TempDTO : dbCrudDTO) {
-        	System.out.println(TempDTO.getTitle() + " " + TempDTO.getName() + " " + TempDTO.getContent());
+        	System.out.println(TempDTO.getTitle() + " " + TempDTO.getUsername() + " " + TempDTO.getContent());
         }        
 	}
 	
@@ -99,7 +99,7 @@ public class FioExcelInportService {
                 for (Cell cell : row) {
                 	switch(cell.getColumnIndex()) {
                 		case 0: tempDTO.setTitle(cell.toString());
-                		case 1: tempDTO.setName (cell.toString());
+                		case 1: tempDTO.setUsername (cell.toString());
                 		case 2: tempDTO.setContent(cell.toString());
                 	}
                 }

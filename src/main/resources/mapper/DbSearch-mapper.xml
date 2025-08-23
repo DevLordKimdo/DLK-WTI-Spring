@@ -6,7 +6,7 @@
 		SELECT idx
 		     , title
 		     , content
-		     , name
+		     , username
 		     , datetime
 		     , hit
 		  FROM post_board
@@ -20,7 +20,7 @@
 					AND content LIKE '%' || #{searchKeyword} || '%'
 				</when>
 				<when test="searchOption == 'name'">
-					AND name LIKE '%' || #{searchKeyword} || '%'
+					AND username LIKE '%' || #{searchKeyword} || '%'
 				</when>
 			</choose>
 		</if>

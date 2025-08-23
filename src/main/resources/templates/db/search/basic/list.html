@@ -27,7 +27,7 @@
 		    <tr th:each="list: ${list}">
 		        <td th:text="${list.idx}"></td>
 		        <td th:text="${list.title}"></td>
-				<td th:text="${list.name}"></td>
+				<td th:text="${list.username}"></td>
 				<td th:text="${list.datetime}"></td>
 		        <td th:text="${list.hit}"></td>
 		    </tr>
@@ -36,10 +36,10 @@
 			<tr>
 				<td colspan="5">
 					<form action="/tmpl/db/search/basic/list" method="post">
-						<select name="searchOption" th:with="searchOption=${search.searchOption}">
-							<option value="title"   th:selected="${searchOption == 'title'}"  >title</option>
-							<option value="content" th:selected="${searchOption == 'content'}">content</option>
-							<option value="name"    th:selected="${searchOption == 'name'}"   >name</option>
+						<select name="searchOption"  th:with="searchOption=${search.searchOption}">
+							<option value="title"    th:selected="${searchOption == 'title'}"  >title</option>
+							<option value="content"  th:selected="${searchOption == 'content'}">content</option>
+							<option value="username" th:selected="${searchOption == 'username'}">username</option>
 						</select>
 						<input type="text" name="searchKeyword" th:value="${search.searchKeyword}">
 						<input type="date" name="searchDateStart"> ~

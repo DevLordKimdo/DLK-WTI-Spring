@@ -6,10 +6,10 @@
 		INSERT INTO post_board (
 			   title
 			 , content
-			 , name
+			 , username
 		) SELECT title
 			   , content
-			   , name
+			   , username
 		  FROM post_board
 		 WHERE idx IN
 	    <foreach item="idx" collection="list" open="(" separator="," close=")">
@@ -20,7 +20,7 @@
 	<update id="updateMulti" parameterType="dlk.wti.spring.uix.form.dto.UixFormDTO">
 		UPDATE post_board SET
 		       title    =  #{title}
-		     , name     =  #{name}
+		     , username =  #{username}
 		     , content  =  #{content}
 		     , hit      =  #{hit}
 		 WHERE idx     IN  

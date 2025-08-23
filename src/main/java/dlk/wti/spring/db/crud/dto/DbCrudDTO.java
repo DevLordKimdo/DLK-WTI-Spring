@@ -5,7 +5,7 @@ public class DbCrudDTO {
 	private String idx;
 	private String title;
 	private String content;
-	private String name;
+	private String username;
 	private String datetime;
 	private String hit;
 	
@@ -27,11 +27,11 @@ public class DbCrudDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getDatetime() {
 		return datetime;
@@ -44,5 +44,6 @@ public class DbCrudDTO {
 	}
 	public void setHit(String hit) {
 		this.hit = hit;
-	}	
+	}
+	
 }

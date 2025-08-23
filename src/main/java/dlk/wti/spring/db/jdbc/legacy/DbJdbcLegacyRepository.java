@@ -26,7 +26,7 @@ public class DbJdbcLegacyRepository {
     		String 	sql  = "SELECT idx        ";
     				sql += "     , title      ";
     				sql += "     , content    ";
-    				sql += "     , name       ";
+    				sql += "     , username   ";
     				sql += "     , datetime   ";
     				sql += "     , hit        ";
     				sql += "  FROM post_board ";
@@ -37,12 +37,12 @@ public class DbJdbcLegacyRepository {
             List<DbCrudDTO> list = new ArrayList<>();
             while (rs.next()) {
             	DbCrudDTO dbCrudDTO = new DbCrudDTO();
-            	dbCrudDTO.setIdx     (rs.getString("idx"));
-            	dbCrudDTO.setTitle   (rs.getString("title"));
-            	dbCrudDTO.setContent (rs.getString("content"));
-            	dbCrudDTO.setName    (rs.getString("name"));
-            	dbCrudDTO.setDatetime(rs.getString("datetime"));
-            	dbCrudDTO.setHit     (rs.getString("hit"));
+            	dbCrudDTO.setIdx      (rs.getString("idx"));
+            	dbCrudDTO.setTitle    (rs.getString("title"));
+            	dbCrudDTO.setContent  (rs.getString("content"));
+            	dbCrudDTO.setUsername (rs.getString("username"));
+            	dbCrudDTO.setDatetime (rs.getString("datetime"));
+            	dbCrudDTO.setHit      (rs.getString("hit"));
                 list.add(dbCrudDTO);
             }
 			
@@ -65,13 +65,13 @@ public class DbJdbcLegacyRepository {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                         
             String 	sql  = "INSERT INTO post_board ";
-            		sql += "  			(title, content, name, datetime, hit) ";
-            		sql += "     VALUES (    ?,       ?,    ?,        ?,   ?) ";
+            		sql += "  			(title, content, setUsername, datetime, hit) ";
+            		sql += "     VALUES (    ?,       ?,           ?,        ?,   ?) ";
             
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, dbCrudDTO.getTitle());
             ps.setString(2, dbCrudDTO.getContent());
-            ps.setString(3, dbCrudDTO.getName());
+            ps.setString(3, dbCrudDTO.getUsername());
             ps.setString(4, now.format(formatter));
             ps.setString(5, "0");
             ps.executeUpdate();
@@ -109,7 +109,7 @@ public class DbJdbcLegacyRepository {
             String 	sql  = "SELECT idx        ";
             		sql += "     , title      ";
             		sql += "     , content    ";
-            		sql += "     , name       ";
+            		sql += "     , username   ";
             		sql += "     , datetime   ";
             		sql += "     , hit        ";
             		sql += "  FROM post_board ";
@@ -123,7 +123,7 @@ public class DbJdbcLegacyRepository {
             	dbCrudDTO.setIdx(rs.getString("idx"));
             	dbCrudDTO.setTitle(rs.getString("title"));
             	dbCrudDTO.setContent(rs.getString("content"));
-            	dbCrudDTO.setName(rs.getString("name"));
+            	dbCrudDTO.setUsername(rs.getString("username"));
             	dbCrudDTO.setDatetime(rs.getString("datetime"));
             	dbCrudDTO.setHit(rs.getString("hit"));
             }
@@ -142,16 +142,16 @@ public class DbJdbcLegacyRepository {
     	try {
             Connection conn = DataSourceUtils.getConnection(dataSource);
                                     
-            String 	sql  = " UPDATE post_board  ";
-            		sql += "    SET title   = ? ";
-            		sql += "      , content = ? ";
-            		sql += "      , name    = ? ";
-            		sql += "  WHERE idx     = ? ";
+            String 	sql  = " UPDATE post_board   ";
+            		sql += "    SET title    = ? ";
+            		sql += "      , content  = ? ";
+            		sql += "      , username = ? ";
+            		sql += "  WHERE idx      = ? ";
             
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, dbCrudDTO.getTitle());
             ps.setString(2, dbCrudDTO.getContent());
-            ps.setString(3, dbCrudDTO.getName());
+            ps.setString(3, dbCrudDTO.getUsername());
             ps.setString(4, dbCrudDTO.getIdx());
             ps.executeUpdate();
             ps.close();

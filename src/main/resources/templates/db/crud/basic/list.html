@@ -27,7 +27,7 @@
 		    <tr th:each="list: ${list}">
 		        <td th:text="${list.idx}"></td>
 		        <td><a th:text="${list.title}" th:href="@{|/tmpl/db/crud/basic/read/${list.idx}|}"></a></td>
-				<td th:text="${list.name}"></td>
+				<td th:text="${list.username}"></td>
 				<td th:text="${list.datetime}"></td>
 		        <td th:text="${list.hit}"></td>
 		    </tr>

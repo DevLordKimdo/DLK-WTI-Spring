@@ -22,16 +22,16 @@ public class DbFormRowsubmitController {
 	}
 	
 	@PostMapping("/tmpl/db/form/row-submit/submit")
-	public String submit(@RequestParam("title")   List<String> title, 
-			             @RequestParam("name")    List<String> name,
-			             @RequestParam("content") List<String> content) {
+	public String submit(@RequestParam("title")    List<String> title, 
+			             @RequestParam("username") List<String> username,
+			             @RequestParam("content")  List<String> content) {
 
 		List<DbCrudDTO> DbCrudDTO = new ArrayList<>();
 		
 		for (int i = 0; i < title.size(); i++) {
 			DbCrudDTO tempDTO = new DbCrudDTO();
 			tempDTO.setTitle(title.get(i));
-			tempDTO.setName(name.get(i));
+			tempDTO.setUsername(username.get(i));
 			tempDTO.setContent(content.get(i));
 			DbCrudDTO.add(tempDTO);
 		}

@@ -6,7 +6,7 @@
 			SELECT idx
 			     , title
 			     , content
-			     , name
+			     , username
 			     , datetime
 			     , hit
 			  FROM post_board

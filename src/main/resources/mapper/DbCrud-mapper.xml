@@ -6,7 +6,7 @@
 		SELECT idx
 		     , title
 		     , content
-		     , name
+		     , username
 		     , datetime
 		     , hit
 		  FROM post_board
@@ -16,14 +16,14 @@
 		INSERT INTO post_board (
 			   title
 			 , content
-			 , name
+			 , username
 			 , datetime
 		     , hit
 		)
 		values (
 			  #{title}
 			, #{content}
-			, #{name}
+			, #{username}
 			, datetime('now', 'localtime')
 			, '0'
 		)
@@ -37,7 +37,7 @@
 	   SELECT idx,
 			  title,
 			  content,
-			  name,
+			  username,
 			  datetime,
 			  hit
 		 FROM post_board
@@ -47,7 +47,7 @@
 	<update id="update" parameterType="dlk.wti.spring.db.crud.dto.DbCrudDTO">
 		UPDATE post_board
 		   SET title    = #{title}
-		     , name     = #{name}
+		     , username = #{username}
 		     , content  = #{content}
 	     WHERE idx = #{idx}
 	</update>
@@ -62,14 +62,14 @@
 		INSERT INTO post_board (
 			   title
 			 , content
-			 , name
+			 , username
 			 , datetime
 		     , hit
 		)
 		values (
 			  #{title}
 			, #{content}
-			, #{name}
+			, #{username}
 			, datetime('now', 'localtime')
 			, '0'
 		)
@@ -84,14 +84,14 @@
 		INSERT INTO post_board (
 			   title
 			 , content
-			 , name
+			 , username
 			 , datetime
 		     , hit
 		)
 		values (
 			  #{title}
 			, #{content}
-			, #{name}
+			, #{username}
 			, datetime('now', 'localtime')
 			, '0'
 		)
