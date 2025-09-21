@@ -35,4 +35,8 @@
 			#{idx}
 		</foreach>
 	</delete>
+	
+	<select id="listUser" resultType="dlk.wti.spring.uix.form.dto.UixFormDTO">
+		SELECT username , manages AS manages FROM user_account
+	</select>
 </mapper>
