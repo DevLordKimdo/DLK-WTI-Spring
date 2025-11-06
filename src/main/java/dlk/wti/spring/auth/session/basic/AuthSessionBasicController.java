@@ -40,7 +40,4 @@ public class AuthSessionBasicController {
 		
 		return "redirect:/tmpl" + "/auth/session/basic/index";
 	}
-	
-	
-
 }
