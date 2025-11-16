@@ -29,8 +29,13 @@ public class AuthSessionBasicService {
 	}
 	
 	public void deleteSession(HttpServletRequest request) {
-		
+
 		HttpSession session = request.getSession();
+
+        // 특정 항목의 세션만 삭제
+        // session.removeAttribute("sessionName");
+
+        // 세션 전체 삭제
 		session.invalidate();
 		
 	}
