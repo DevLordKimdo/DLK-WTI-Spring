@@ -32,8 +32,16 @@ public class AuthLoginSessionRestController {
 
     @PostMapping("/rest/auth/login/session/logout")
     public ResponseEntity<String> logout(HttpServletRequest request) {
+        
+        System.out.println("로그아웃");
 
         authLoginSessionService.deleteSession(request);
+
+        return ResponseEntity.ok("Success");
+    }
+
+    @GetMapping("/rest/auth/login/session/index")
+    public ResponseEntity<String> index(HttpServletRequest request) {
 
         return ResponseEntity.ok("Success");
     }

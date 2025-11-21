@@ -36,20 +36,6 @@ public class AuthLoginSessionFilter implements Filter {
             }
         }
 
-        // /rest 로 접속한 사용자 처리
-        if (uri.startsWith("/rest/auth/login/session") && !uri.equals("/rest/auth/login/session/login")) {
-            if (session != null && "admin".equals(session.getAttribute("username"))) {
-                System.out.println("세션이 없습니다.");
-                return;
-            }
-        }
-        if (uri.equals("/rest/auth/login/session/login")) {
-            if (session != null && "admin".equals(session.getAttribute("username"))) {
-                System.out.println("로그인된 사용자입니다.");
-                return;
-            }
-        }
-
         // 통과
         chain.doFilter(request, response);
     }
